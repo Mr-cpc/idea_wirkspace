@@ -14,7 +14,7 @@ public class LongestMatPara {
         for(int i = 0;i<prefix.length -1;i++) {
             for(int j = i +1;j<prefix.length;j++) {
                 if(prefix[j] - prefix[i] == 0) {
-                    if(bras[i] == '(')
+                    if(bras[i] == '(' && !isRightMoreThanLeft(prefix,i,j))
                         res = Math.max(res,j - i);
                 }
             }
@@ -39,4 +39,11 @@ public class LongestMatPara {
         System.out.println(test1(bra.toCharArray()));
     }
 
+    public static boolean isRightMoreThanLeft(int[] prefix,int st,int en) {
+        for(int i = st +1;i<=en;i++) {
+            if(prefix[i] - prefix[st] == -1)
+                return true;
+        }
+        return false;
+    }
 }
