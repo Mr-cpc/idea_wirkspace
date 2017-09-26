@@ -69,7 +69,8 @@ public class TwentyFour {
         res.add(operators.get(0) + operators.get(1));
         res.add(operators.get(0) - operators.get(1));
         res.add(operators.get(0) * operators.get(1));
-        res.add(operators.get(0) / operators.get(1));
+        if(operators.get(1) != 0)
+            res.add(operators.get(0) / operators.get(1));
         return res;
     }
     /**
@@ -104,7 +105,7 @@ public class TwentyFour {
         List<List<Integer>> perms = new ArrayList<>();
         List<Integer> nums = Arrays.asList(new Integer[]{5,7,8,4});
 //        perm(nums,perms,new ArrayList<Integer>(),1);
-        System.out.println(tf(new int[]{5,7,8,4}));
+        System.out.println(tf(new int[]{5,7,12,4}));
 //        System.out.println(perms.size());
     }
 
