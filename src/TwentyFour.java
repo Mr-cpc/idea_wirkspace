@@ -1,3 +1,5 @@
+import sun.org.mozilla.javascript.internal.ast.ForInLoop;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -51,7 +53,7 @@ public class TwentyFour {
                 nums.remove(i);
             }
             add(nums,res);
-            }
+        }
         return false;
     }
 
