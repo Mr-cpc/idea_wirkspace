@@ -18,7 +18,7 @@ public class LongContigious {
     }
 
     public static void main(String[] args) {
-        int a[] = {3,2,5,8,6,88,99,999};
+        int a[] = {3,2,5,8,6,88,99,999,1000};
         System.out.println(LongContigious.test1(a));
     }
 }
