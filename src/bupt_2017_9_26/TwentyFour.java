@@ -1,4 +1,4 @@
-import sun.org.mozilla.javascript.internal.ast.ForInLoop;
+package bupt_2017_9_26;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,9 +1,10 @@
+package bupt_2017_9_26;
+
 import myinterface.MultiwayTree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 
 /**

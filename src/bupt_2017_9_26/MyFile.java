@@ -1,3 +1,5 @@
+package bupt_2017_9_26;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.LinkedList;

@@ -1,5 +1,7 @@
+package bupt_2017_9_26;
+
 import java.io.IOException;
-import java.util.*;
+import java.util.Random;
 
 public class IO {
 

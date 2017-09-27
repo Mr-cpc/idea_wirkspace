@@ -1,10 +1,6 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+package bupt_2017_9_26;
+
+import java.io.*;
 
 /**
  * @author waiting
@@ -79,6 +75,6 @@ public class MyReader {
 		}
 	}
 	public static void main(String[] args) {
-		IO.writeFile("D:\\certs\\a.txt" ,"gbk",IO.readFile("D:\\RB.java", "utf-8"));
+		IO.writeFile("D:\\certs\\a.txt" ,"gbk", IO.readFile("D:\\RB.java", "utf-8"));
 	}
 }
