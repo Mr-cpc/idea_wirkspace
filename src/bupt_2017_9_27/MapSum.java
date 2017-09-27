@@ -22,6 +22,8 @@ public class MapSum {
 //        return res;
 //    }
     /*by jdk's Map END---------*/
+
+
     /*by self's Trie---------*/
     Trie trie = new Trie();
     public void insert(String str,Integer i) {
@@ -31,7 +33,7 @@ public class MapSum {
         TrieNode t = trie.startsWith(prefix);
         return t == null?0:t.num;
     }
-    /*by self's Trie END---------*/
+
 
 
     private static class Trie {
@@ -117,7 +119,7 @@ public class MapSum {
         }
 
     }
-
+    /*by self's Trie END---------*/
     public static void main(String[] args) {
         MapSum mapSum = new MapSum();
         mapSum.insert("apple",3);
