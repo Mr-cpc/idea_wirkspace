@@ -52,9 +52,9 @@ public class MapSum {
                 else {
                     t = t.addChild(c);
                 }
-                t.num+=i;
+                t.num += i;
             }
-            t.num += i;
+//            t.num += i;
             t.isWordEnd = true;
         }
         public TrieNode startsWith(String prefix) {
@@ -123,7 +123,7 @@ public class MapSum {
     public static void main(String[] args) {
         MapSum mapSum = new MapSum();
         mapSum.insert("apple",3);
-        System.out.println(mapSum.sum("ap"));
+        System.out.println(mapSum.sum("apple"));
         mapSum.insert("app",2);
         System.out.println(mapSum.sum("ap"));
     }
