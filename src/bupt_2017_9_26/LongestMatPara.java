@@ -27,16 +27,13 @@ public class LongestMatPara {
             res[i] = (bra[i] == '(') ? 1 : -1;
         }
         int[] res1 = new int[bra.length+1];
-        for(int i = 1;i<res.length;i++) {
+        for(int i = 1;i<res1.length;i++) {
             res1[i] += res1[i-1] + res[i-1];
         }
         return res1;
     }
 
-    public static void main(String[] args) {
-        String bra = IO.readFile("bra.txt","utf-8");
-        System.out.println(test1(bra.toCharArray()));
-    }
+
 
     public static boolean isRightMoreThanLeft(int[] prefix,int st,int en) {
         for(int i = st +1;i<=en;i++) {
@@ -44,5 +41,9 @@ public class LongestMatPara {
                 return true;
         }
         return false;
+    }
+    public static void main(String[] args) {
+        String bra = IO.readFile("bra.txt","utf-8");
+        System.out.println(test1(bra.toCharArray()));
     }
 }
