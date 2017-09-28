@@ -20,29 +20,29 @@ public class TwentyFour {
      * @return
      */
     public static boolean tf(int[] num) {
-        List<Integer> nums = new ArrayList<>(num.length);
+        List<Double> nums = new ArrayList<>(num.length);
         for(int i:num)
-            nums.add(i);
+            nums.add(Double.valueOf(i));
         //从4个数中取2个的排列
-        List<List<Integer>> perms = two_perm(nums);
+        List<List<Double>> perms = two_perm(nums);
 
-        for(List<Integer> res:perms) {
+        for(List<Double> res:perms) {
             remove(nums,res);
-            List<Integer> ans = operation(res);
-            for (Integer i : ans) {
+            List<Double> ans = operation(res);
+            for (Double i : ans) {
                 nums.add(i);
-                List<List<Integer>> perms3 = two_perm(nums);
-                for (List<Integer> res3 : perms3) {
+                List<List<Double>> perms3 = two_perm(nums);
+                for (List<Double> res3 : perms3) {
                     remove(nums,res3);
-                    List<Integer> ans3 = operation(res3);
-                    for (Integer i2 : ans3) {
+                    List<Double> ans3 = operation(res3);
+                    for (Double i2 : ans3) {
                         nums.add(i2);
-                        List<List<Integer>> perms2 = two_perm(nums);
-                        for (List<Integer> res2 : perms2) {
+                        List<List<Double>> perms2 = two_perm(nums);
+                        for (List<Double> res2 : perms2) {
                             remove(nums,res2);
-                            List<Integer> ans1 = operation(res2);
-                            for (Integer finalAns : ans1)
-                                if (finalAns == 24)
+                            List<Double> ans1 = operation(res2);
+                            for (Double finalAns : ans1)
+                                if (Math.abs(finalAns-24) <= 1e-6)
                                     return true;
                             add(nums,res2);
                         }
@@ -66,15 +66,26 @@ public class TwentyFour {
         for(E e:slave)
             master.remove(e);
     }
-    private static List<Integer> operation(List<Integer> operators) {
-        List<Integer> res = new LinkedList<>();
-        res.add(operators.get(0) + operators.get(1));
-        res.add(operators.get(0) - operators.get(1));
-        res.add(operators.get(0) * operators.get(1));
-        if(operators.get(1) != 0)
-            res.add(operators.get(0) / operators.get(1));
+//    private static List<Integer> operation(List<Integer> operators) {
+//        List<Integer> res = new LinkedList<>();
+//        res.add(operators.get(0) + operators.get(1));
+//        res.add(operators.get(0) - operators.get(1));
+//        res.add(operators.get(0) * operators.get(1));
+//        if(operators.get(1) != 0)
+//            res.add(operators.get(0) / operators.get(1));
+//        return res;
+//    }
+    private static List<Double> operation(List<Double> operators) {
+        List<Double> res = new LinkedList<>();
+        Double op1 = operators.get(0),op2 = operators.get(1);
+        res.add(op1 + op2);
+        res.add(op1 - op2);
+        res.add(op1 * op2);
+        if(Math.abs(op2) >= 1e-6)
+            res.add(op1 / op2);
         return res;
     }
+
     /**
      *
      * @param nums
@@ -82,25 +93,25 @@ public class TwentyFour {
      * @param cur
      * @param n
      */
-    public static void perm(List<Integer> nums,List<List<Integer>> res,List<Integer> cur,int n) {
+    public static <E> void perm(List<E> nums,List<List<E>> res,List<E> cur,int n) {
         if(n == 0) {
             res.add(cur);
             return ;
         }
-        List<Integer> copy = new ArrayList<>(nums);
-        for(int i:nums) {
+        List<E> copy = new ArrayList<>(nums);
+        for(E i:nums) {
             cur.add(i);
-            copy.remove(new Integer(i));
-            perm(copy,res,new ArrayList<Integer>(cur),n-1);
-            cur.remove(new Integer(i));
+            copy.remove(i);
+            perm(copy,res,new ArrayList<E>(cur),n-1);
+            cur.remove(i);
             copy.add(i);
         }
     }
 
-    private static List<List<Integer>> two_perm(List<Integer> nums) {
+    private static <E> List<List<E>> two_perm(List<E> nums) {
         int size = nums.size();
-        List<List<Integer>> res = new ArrayList<>(size*(size-1));
-        perm(nums,res,new LinkedList<Integer>(),2);
+        List<List<E>> res = new ArrayList<>(size*(size-1));
+        perm(nums,res,new LinkedList<E>(),2);
         return res;
     }
     public static void main(String[] args) {
