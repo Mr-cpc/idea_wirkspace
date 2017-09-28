@@ -5,10 +5,11 @@ package bupt_2017_9_28;
  */
 public class ValidP {
     public static boolean va(String str) {
-        StringBuilder sb = new StringBuilder(str.trim());
-        for(int i = 0;i<sb.length();i++) {
-            if(!Character.isLetter(sb.charAt(i)))
-                sb.deleteCharAt(i);
+        char[] cc = str.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for(char c:cc) {
+            if(Character.isLetterOrDigit(c))
+                sb.append(c);
         }
         return isPalin(sb.toString().toCharArray());
     }
@@ -16,9 +17,23 @@ public class ValidP {
     private static boolean isPalin(char[] chars) {
         int mid = chars.length / 2,dif = 0;
         for (int i = 0; i <= mid; i++) {
-            dif = Math.abs((int)(chars[i] - chars[chars.length - 1- i]));
-            if(dif != 32 && dif != 0)
-                return false;
+            if(Character.isLetter(chars[i])) {
+                if(Character.isLetter(chars[chars.length - 1- i])) {
+                    dif = Math.abs((int)(chars[i] - chars[chars.length - 1- i]));
+                    if(dif != 32 && dif != 0)
+                        return false;
+                }
+                else
+                    return false;
+            }
+            else {
+                if(Character.isLetter(chars[chars.length - 1- i]))
+                    return false;
+                else {
+                    if(chars[i] != chars[chars.length - 1 - i])
+                        return false;
+                }
+            }
         }
         return true;
     }
@@ -28,6 +43,6 @@ public class ValidP {
     }
 
     public static void main(String[] args) {
-        System.out.println(va("0P"));
+        System.out.println(va("\"7Ci`rd,9X;;r9,dX`iC7\""));
     }
 }
