@@ -1,6 +1,7 @@
 package bupt_2017_9_28;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,27 +19,29 @@ public class ClosestK {
             if(x >= nums[nums.length - 1]) {
                 for(int i = 1;i<=k;i++)
                     res.add(nums[nums.length - i]);
+                Collections.reverse(res);
             }
             else {
                 int idx = closest(nums,x),i = idx - 1,j =  idx + 1,count = 1;
                 res.add(nums[idx]);
-                while(count++ <= k && i >= 0 && j < nums.length) {
+                while(count < k && i >= 0 && j < nums.length) {
                     if(x - nums[i] <= nums[j] -x ) {
                         res.add(0,nums[i--]);
                     }
                     else {
                         res.add(res.size(),nums[j++]);
                     }
+                    count++;
                 }
-                if(count > k)
+                if(count >= k)
                     return res;
                 else {
                     if(i < 0) {
-                        while(count++ <= k)
+                        while(count++ < k)
                             res.add(nums[j++]);
                     }
                     else {
-                        while(count ++ <= k)
+                        while(count ++ < k)
                             res.add(0,nums[i--]);
                     }
                 }
@@ -56,9 +59,9 @@ public class ClosestK {
     }
 
     public static void main(String[] args) {
-        int a[] = {1,5,8,9,13};
+        int a[] = {0,1,2,2,2,3,6,8,8,9};
         System.out.println(closest(a,0));
-        System.out.println(closestK(a,3,7));
+        System.out.println(closestK(a,5,9));
     }
 
 }
