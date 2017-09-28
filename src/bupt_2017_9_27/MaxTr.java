@@ -15,13 +15,13 @@ public class MaxTr {
             return null;
         int idx = findMax(nums,start,end);
         TreeNode t = new TreeNode(nums[idx]);
-        t.l = reConstruct(nums,start,idx-1);
-        t.r = reConstruct(nums,idx +1,end);
+        t.left = reConstruct(nums,start,idx-1);
+        t.right = reConstruct(nums,idx +1,end);
         return t;
     }
     private static int findMax(int[] nums,int start,int end) {
         int idx = start,max = Integer.MIN_VALUE;
-        for (int i = start; i < end; i++) {
+        for (int i = start; i <= end; i++) {
             if (nums[i] > max) {
                 max = nums[i];
                 idx = i;
@@ -32,8 +32,8 @@ public class MaxTr {
     public static void trav(TreeNode t) {
         if(t != null) {
             System.out.println(t.val);
-            trav(t.l);
-            trav(t.r);
+            trav(t.left);
+            trav(t.right);
         }
     }
 
@@ -67,6 +67,6 @@ public class MaxTr {
             this.val = val;
         }
 
-        TreeNode l,r;
+        TreeNode left,right;
     }
 }
