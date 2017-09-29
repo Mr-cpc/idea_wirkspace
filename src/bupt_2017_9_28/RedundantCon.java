@@ -6,17 +6,20 @@ import java.util.*;
  * Created by waiting on 2017/9/28.
  */
 public class RedundantCon {
-    public static int[] redundantCon(int[][] g) {
+    public static List<Integer> redundantCon(int[][] g) {
         List<List<Integer>> gra = new ArrayList<>(g.length);
         for(int[] i:g)
             gra.add(arrayToList(i));
-        for(int i = g.length -1;i >= 0;i--) {
-            List<Integer> tmp = gra.remove(i);
+        Collections.reverse(gra);
+        Iterator<List<Integer>> iterator = gra.iterator();
+        while(iterator.hasNext()) {
+            List<Integer> tmp = iterator.next();
+            iterator.remove();
             if(canBeToplog(new ArrayList<>(gra) ,g.length))
-                return g[i];
+                return tmp;
             gra.add(tmp);
         }
-        return g[0];
+        return gra.get(0);
     }
     //
     private static boolean canBeToplog(List<List<Integer>> gra,int num) {
@@ -69,13 +72,13 @@ public class RedundantCon {
     }
 
     public static void main(String[] args) {
-        int[][] g = {{1,2},{2,3},{3,4},{1,4},{1,5}};
-        int gg[][] = {{1,2},{2,3},{3,4},{1,5}};
-        List<List<Integer>> list = new LinkedList<>();
-        for(int[] arr:gg)
-            list.add(arrayToList(arr));
-        System.out.println(canBeToplog(list,5));
-//        System.out.println(Arrays.toString(redundantCon(g)));
+        int[][] g = {{1,3},{3,4},{1,5},{3,5},{2,3}};
+//        int gg[][] = {{1,2},{2,3},{3,4},{1,5}};
+//        List<List<Integer>> list = new LinkedList<>();
+//        for(int[] arr:gg)
+//            list.add(arrayToList(arr));
+//        System.out.println(canBeToplog(list,5));
+        System.out.println(redundantCon(g));
     }
 
 
