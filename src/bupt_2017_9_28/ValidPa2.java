@@ -25,10 +25,12 @@ public class ValidPa2 {
     }
 
 
-    //
+    //这个可以解决只能删除最多一个字符
     public static boolean va3(String s,int i, int j,int modifyTime) {
-        if(modifyTime >1 || i >= j)
+        if(modifyTime > 1)
             return false;
+        if(i >= j )
+            return true;
         if(s.charAt(i) == s.charAt(j))
             return va3(s,i+1,j-1,modifyTime);
         else {
@@ -36,7 +38,7 @@ public class ValidPa2 {
         }
     }
     public static void main(String[] args) {
-        String s = "abca";
+        String s = "aacbada";
         System.out.println(va3(s,0,s.length() - 1,0));
     }
 }
