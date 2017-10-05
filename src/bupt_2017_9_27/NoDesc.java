@@ -10,7 +10,7 @@ public class NoDesc {
         int minMax = nums[0],time = 0,copy[] = new int[nums.length+1];
         for(int i = 1;i<copy.length;i++)
             copy[i] = nums[i-1];
-        copy[0] = Integer.MIN_VALUE;
+        copy[0] = copy[1];
         for(int i = 2;i<copy.length;i++) {
             if(copy[i] >= copy[i-1])
                 continue;
@@ -22,6 +22,8 @@ public class NoDesc {
                     time++;
                 }
                 else {
+                    if(time != 0)
+                        return false;
                     copy[i] = copy[i-1];
                     time++;
                 }
@@ -32,7 +34,7 @@ public class NoDesc {
 
 
     public static void main(String[] args) {
-        int a[] = {1,2,1,9};
+        int a[] = {3,4,2,3};
         System.out.println(oneModify(a));
     }
 }
