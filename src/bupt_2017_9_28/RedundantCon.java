@@ -12,12 +12,16 @@ public class RedundantCon {
             gra.add(arrayToList(i));
         Collections.reverse(gra);
         Iterator<List<Integer>> iterator = gra.iterator();
+        List<List<Integer>> pre = new ArrayList<>();
         while(iterator.hasNext()) {
             List<Integer> tmp = iterator.next();
             iterator.remove();
-            if(canBeToplog(new ArrayList<>(gra) ,g.length))
+            List<List<Integer>> copy = new ArrayList<>(gra);
+            copy.addAll(pre);
+            if(canBeToplog(copy ,g.length))
                 return tmp;
-            gra.add(tmp);
+            pre.add(tmp);
+//            gra.add(tmp);
         }
         return gra.get(0);
     }
