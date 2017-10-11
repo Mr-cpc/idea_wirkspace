@@ -1,3 +1,4 @@
+import random
 class Linear(object):
     def __init__(self,params,points):
         self.params = params[:]
@@ -28,13 +29,18 @@ class Linear(object):
             for j in range(len(self.points)):
                 change += (self.mul(self.params,self.points[j][:len(self.points[j])-1]) - self.points[j][-1]) * self.points[j][i]
             self.params[i] -= self.learn_rate * change
+
+    def ran_gradient_desc(self):
+        for i in range(len(self.params)):
+            ran_point = self.points[random.randrange(0,len(self.points))]
+            self.params[i] -= self.learn_rate * ((self.mul(self.params,ran_point[:-1])-ran_point[-1])*ran_point[i])
+
 params = [1,7]
 points = [[1,2,5],[1,3,8],[1,4,10]]
 linear = Linear(params,points)
 linear.set_learnrate(0.01)
-# print(points[0][:len(points[0])-1])
-for i in range(100):
+print(points[0][:len(points[0])-1])
+for i in range(10000):
     print(linear.params)
     print(linear.compute_error())
-
-    linear.gradient_desc()
+    linear.ran_gradient_desc()
