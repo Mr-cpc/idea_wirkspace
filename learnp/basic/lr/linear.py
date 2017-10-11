@@ -1,4 +1,5 @@
 import random
+from matplotlib.pyplot import *
 class Linear(object):
     def __init__(self,params,points):
         self.params = params[:]
@@ -39,8 +40,14 @@ params = [1,7]
 points = [[1,2,5],[1,3,8],[1,4,10]]
 linear = Linear(params,points)
 linear.set_learnrate(0.01)
-print(points[0][:len(points[0])-1])
-for i in range(10000):
+x = [i[1] for i in points]
+y = [i[2] for i in points]
+plot(x,y,"g^")
+for i in range(100):
     print(linear.params)
     print(linear.compute_error())
-    linear.ran_gradient_desc()
+    x = [ i[1] for i in linear.points]
+    y = [linear.mul(linear.params,linear.points[i][:len(linear.points[i])-1]) for i in range(len(linear.points))]
+    plot(x,y)
+    linear.gradient_desc()
+savefig("re.png")
