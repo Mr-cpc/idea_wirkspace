@@ -1,18 +1,19 @@
 import random
 from matplotlib.pyplot import *
 class Linear(object):
-    def __init__(self,params,points):
+    def __init__(self,params,points,learn_rate = 0.01):
         self.params = params[:]
         self.points = points[:]
+        self.learn_rate = learn_rate
 
-    def set_learnrate(self,learn_rate):
+    def set_learnrate(self, learn_rate):
         self.learn_rate = learn_rate
 
     def mul(self,a,b):
         res = 0.0
         if len(a) != len(b):
             pass
-        else :
+        else:
             for i in range(len(a)):
                 res += a[i] * b[i]
         return res
@@ -39,11 +40,11 @@ class Linear(object):
 params = [1,7]
 points = [[1,2,5],[1,3,8],[1,4,10]]
 linear = Linear(params,points)
-linear.set_learnrate(0.01)
+# linear.set_learnrate(0.001)
 x = [i[1] for i in points]
 y = [i[2] for i in points]
 plot(x,y,"g^")
-for i in range(100):
+for i in range(10000):
     print(linear.params)
     print(linear.compute_error())
     x = [ i[1] for i in linear.points]
