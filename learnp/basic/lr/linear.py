@@ -29,7 +29,7 @@ class Linear(object):
         for i in range(len(self.params)):
             change = 0
             for j in range(len(self.points)):
-                change += (self.mul(self.params,self.points[j][:len(self.points[j])-1]) - self.points[j][-1]) * self.points[j][i]
+                change += (self.mul(self.params,self.points[j][:len(self.points[j])-1]) - self.points[j][-1]) * self.points[j][i] // len(self.points)
             self.params[i] -= self.learn_rate * change
 
     def ran_gradient_desc(self):
@@ -37,6 +37,8 @@ class Linear(object):
             ran_point = self.points[random.randrange(0,len(self.points))]
             self.params[i] -= self.learn_rate * ((self.mul(self.params,ran_point[:-1])-ran_point[-1])*ran_point[i])
 
+    def predict(self,point):
+        return self.mul(self.params,point)
 params = [1,7]
 points = [[1,2,5],[1,3,8],[1,4,10]]
 linear = Linear(params,points)
@@ -44,7 +46,7 @@ linear = Linear(params,points)
 x = [i[1] for i in points]
 y = [i[2] for i in points]
 plot(x,y,"g^")
-for i in range(10000):
+for i in range(1000):
     print(linear.params)
     print(linear.compute_error())
     x = [ i[1] for i in linear.points]
