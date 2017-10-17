@@ -31,7 +31,7 @@ class Bayes:
                 mx = (point[-1],p)
         return mx
 #例题网址 http://www.ruanyifeng.com/blog/2013/12/naive_bayes_classifier.html
-with open("result.txt",encoding="utf-8") as f:
+with open("bayesdata.txt",encoding="utf-8") as f:
     datas = [re.split("\\s+",data[:-1]) for data in f.readlines()]
     bayes = Bayes(datas)
 # print(datas)
