@@ -1,3 +1,5 @@
+from functools import reduce
+
 def comb_n(res,nums,cur,n):
     if n == 0:
         res.append(cur)
@@ -57,7 +59,35 @@ def k_parti(nums,k):
         res1 = map(lambda l:l.append(choose),part1)
 
 
+def canbe(nums, k, group,target):
+    if group == target:
+        return True
+    elif len(nums) == 0:
+        return False
+    else:
+        nums_copy = nums[:]
+        pass
+
+
+def print_secondstiring(filename,n):
+    with open(filename,"w",encoding="utf-8") as f:
+        for i in range(1,n+1):
+            f.write("---------------------------------\n")
+            f.write(str(i)+"'s all partition\n")
+            f.write("----------------\n")
+            for j in range(1,i+1):
+                f.write(str(i)+"'s"+str(j)+"partition:"+str(count_k_parti(i,j)))
+                f.write("\n")
+            f.write("---------------------------------\n")
+def canbekequparti(nums,k):
+    nums_sum = reduce(lambda x,y:x+y,nums,0)
+    if nums_sum % k != 0:
+        return False
+    else:
+        return canbe(nums,k,[0]*k,[nums_sum // k]*k)
+
 res = contigious_k_parti([1,2,3,4],2)
 a = [[1,2],[1,2,3]]
 b = [1,2]
-print(count_k_parti(4,2))
+# print_secondstiring("second_stiring.txt",10)
+print(count_k_parti(25,10))
