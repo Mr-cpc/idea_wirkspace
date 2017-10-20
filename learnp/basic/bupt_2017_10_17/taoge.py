@@ -48,4 +48,5 @@ for perm in perms:
             f.write(str(sec_lin))
             f.write("\n")
             ans += 1
+f.close()
 print(ans)
