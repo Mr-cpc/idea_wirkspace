@@ -45,6 +45,21 @@ class Mat:
 
     def conconstruct_by_cols(cols):
         return Mat.construct_by_rows(cols).transpose()
+
+    def det(self):
+        mat = self.upper_tri()
+        res = 1
+        for i in range(len(mat.mat)):
+            res *= mat.mat[i][i]
+        return res
+    def upper_tri(self):
+        mat = Mat()
+        mat.mat = [[self.mat[row][col] for col in range(len(self.mat[0]))] for row in range(len(self.mat))]
+        for i in range(len(self.mat[0])):
+            for j in range(i+1,len(self.mat)):
+                mat.mat[j] = [(mat.mat[j][k] - mat.mat[j][i] * mat.mat[i][k] / mat.mat[i][i]) for k in range(len(mat.mat[j]))]
+        return mat
+
     def transpose(self):
         mat = Mat()
         mat.mat = [[self.mat[col][row] for col in range(len(self.mat[0]))] for row in range(len(self.mat))]
@@ -140,6 +155,9 @@ class Mat:
         mat.mat = [[argumented[row][col] for col in range(len(self.mat),len(argumented[0]))] for row in range(len(argumented))]
         return mat
 
+    def __str__(self):
+        return str(self.mat)
+
 # with open("mat.txt","w") as f:
 #     for i in range(3):
 #         f.write("1 2 3\n")
@@ -147,4 +165,4 @@ mat = Mat("mat.txt")
 # inv = mat.inv()
 # Mat.write(inv.mat,"inv.txt")
 # print(mat.rightMul(inv).mat)
-print(mat.orth_by_row().mat)
+print(mat.det())
