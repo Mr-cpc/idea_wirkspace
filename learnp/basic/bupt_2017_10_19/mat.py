@@ -47,7 +47,7 @@ class Mat:
         return Mat.construct_by_rows(cols).transpose()
 
     def det(self):
-        mat = self.upper_tri()
+        mat = self.lower_tri()
         res = 1
         for i in range(len(mat.mat)):
             res *= mat.mat[i][i]
@@ -56,10 +56,19 @@ class Mat:
         mat = Mat()
         mat.mat = [[self.mat[row][col] for col in range(len(self.mat[0]))] for row in range(len(self.mat))]
         for i in range(len(self.mat[0])):
+            self.check_pivot(i)
             for j in range(i+1,len(self.mat)):
                 mat.mat[j] = [(mat.mat[j][k] - mat.mat[j][i] * mat.mat[i][k] / mat.mat[i][i]) for k in range(len(mat.mat[j]))]
         return mat
 
+    def lower_tri(self):
+        mat = Mat(ndarray=self.mat[:])
+        for i in list(range(len(self.mat)))[::-1]:
+            self.check_pivot(i,False)
+            print(self.mat[i])
+            for j in list(range(i))[::-1]:
+                mat.mat[j] = [( mat.mat[j][k] -  mat.mat[j][i] *  mat.mat[i][k] /  mat.mat[i][i]) for k in range(len( mat.mat[j]))]
+        return mat
     def transpose(self):
         mat = Mat()
         mat.mat = [[self.mat[col][row] for col in range(len(self.mat[0]))] for row in range(len(self.mat))]
@@ -131,6 +140,8 @@ class Mat:
     def orth_by_row(self):
         row_vecs =self.rows()
         return Mat.construct_by_rows(Vec.orthogonal(row_vecs))
+    def diagonal(self):
+        return self.lower_tri().upper_tri()
     def inv(self):
         if len(self.mat) == 0 or len(self.mat) != len(self.mat[0]):
             raise Exception("not a phalanx!")
@@ -138,6 +149,7 @@ class Mat:
         E = Mat.generateE(len(self.mat)).mat
         argumented = [self.mat[row]+E[row] for row in range(len(self.mat))]
         for i in range(len(self.mat)):
+            self.check_pivot(i)
             for j in range(i+1,len(self.mat)):
                 # for k in range(len(argumented[j])):
                 #     argumented[j][k] -= argumented[j][i] * argumented[i][k] /argumented[i][i]
@@ -158,6 +170,20 @@ class Mat:
     def __str__(self):
         return str(self.mat)
 
+    def check_pivot(self,i,dire=True):
+        if self.mat[i][i] != 0:
+            return
+        else :
+            print("pivot == 0")
+            j = 0
+            for j in range(i+1,len(self.mat)) if dire else list(range(i))[::-1]:
+                if(self.mat[j][i] != 0):
+                    self.mat[i],self.mat[j] = self.mat[j],self.mat[i]
+                    break
+            if j == len(self.mat) if dire else j == -1:
+                raise Exception("can't be inv")
+
+
 # with open("mat.txt","w") as f:
 #     for i in range(3):
 #         f.write("1 2 3\n")
@@ -165,4 +191,4 @@ mat = Mat("mat.txt")
 # inv = mat.inv()
 # Mat.write(inv.mat,"inv.txt")
 # print(mat.rightMul(inv).mat)
-print(mat.det())
+print(mat.lower_tri())
