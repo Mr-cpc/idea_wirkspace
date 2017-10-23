@@ -1,7 +1,7 @@
 import re
 from functools import reduce
-from basic.bupt_2017_10_20.ColVec import ColVec
-from basic.bupt_2017_10_20.RowVec import RowVec
+
+from basic.bupt_2017_10_19.Vec import Vec
 
 
 class Mat:
@@ -27,6 +27,24 @@ class Mat:
     def init_by_ndarray(self, ndarray):
         self.mat = ndarray[:]
 
+    def rows(self):
+        l = []
+        for row in self.mat:
+            l.append(Vec(row))
+        return l
+    def cols(self):
+        # l = []
+        # for col in range(len(self.mat[0])):
+        #     l.append( ColVec( [self.mat[y][col] for y in range(len(self.mat))] ) )
+        return self.transpose().rows()
+    def construct_by_rows(rows):
+        mat = Mat()
+        for row in rows:
+            mat.mat.append([x for x in row.data])
+        return mat
+
+    def conconstruct_by_cols(cols):
+        return Mat.construct_by_rows(cols).transpose()
     def transpose(self):
         mat = Mat()
         mat.mat = [[self.mat[col][row] for col in range(len(self.mat[0]))] for row in range(len(self.mat))]
@@ -67,11 +85,11 @@ class Mat:
                 f.write("\n")
 
     def getRow(self,n):
-        return RowVec(self.mat[n][:])
+        return Vec(self.mat[n][:])
 
 
     def getCol(self,n):
-        return ColVec([self.mat[row][n] for row in range(len(self.mat))])
+        return Vec([self.mat[row][n] for row in range(len(self.mat))])
 
     def dotprod(v1,v2):
         return reduce(lambda x,y:x+y,map(lambda x,y:x*y,v1,v2))
@@ -81,16 +99,23 @@ class Mat:
     def list_sub_list(v1,v2):
         for i in range(len(v1)):
             v1[i] -= v2[i]
+    '''
     def orthogonal(self):
         ort = Mat()
         ort.mat = [[0 for i in range(len(self.mat[0]))] for j in range(len(self.mat))]
         for row in range(len(self.mat)):
             ort.mat[row] = self.mat[row][:]
-            print(ort.mat[row])
             for i in range(row):
                 Mat.list_sub_list(ort.mat[row],Mat.list_num_mul(ort.mat[i],Mat.dotprod(self.mat[row],ort.mat[i])/Mat.dotprod(ort.mat[i],ort.mat[i])))
-            print(ort.mat[row])
         return ort
+    '''
+    def orth_by_col(self):
+        col_vecs =self.cols()
+        return Mat.conconstruct_by_cols(Vec.orthogonal(col_vecs))
+
+    def orth_by_row(self):
+        row_vecs =self.rows()
+        return Mat.construct_by_rows(Vec.orthogonal(row_vecs))
     def inv(self):
         if len(self.mat) == 0 or len(self.mat) != len(self.mat[0]):
             raise Exception("not a phalanx!")
@@ -122,4 +147,4 @@ mat = Mat("mat.txt")
 # inv = mat.inv()
 # Mat.write(inv.mat,"inv.txt")
 # print(mat.rightMul(inv).mat)
-print(mat.orthogonal().mat)
+print(mat.orth_by_row().mat)
