@@ -20,8 +20,11 @@ class Vec:
 
     def sub(self,vec):
         return Vec([self.data[i]-vec.data[i] for i in range(len(vec.data))])
+
+    def mol(self):
+        return sqrt(reduce(lambda x,y:x+y,map(lambda x:x**2,self.data)))
     def norm(self):
-        mold = sqrt(reduce(lambda x,y:x+y,map(lambda x:x**2,self.data)))
+        mold = self.mol()
         vec = Vec([x/mold for x in self.data])
         return vec
 
