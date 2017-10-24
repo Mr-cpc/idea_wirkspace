@@ -152,7 +152,9 @@ class Mat:
         text = egi.send_to_ysz(self.mat,url)
         return [Vec(vec) for vec in egi.parse_egi_result(text)[1]]
     def diagonal(self):
-        return self.lower_tri().upper_tri()
+        vecs = self.egi_vecs()
+        egi_mat = Mat(ndarray = [vec.data for vec in vecs]).transpose()
+        return egi_mat.inv().leftMul(self).leftMul(egi_mat)
     def inv(self):
         if len(self.mat) == 0 or len(self.mat) != len(self.mat[0]):
             raise Exception("not a phalanx!")
@@ -206,4 +208,4 @@ mat = Mat("mat.txt")
 # inv = mat.inv()
 # Mat.write(inv.mat,"inv.txt")
 # print(mat.rightMul(inv).mat)
-print(mat)
+print(mat.diagonal())
