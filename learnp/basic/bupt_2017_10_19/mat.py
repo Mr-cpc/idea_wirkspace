@@ -2,6 +2,7 @@ import re
 from functools import reduce
 
 from basic.bupt_2017_10_19.Vec import Vec
+from basic.bupt_2017_10_24 import egi
 
 
 class Mat:
@@ -140,6 +141,16 @@ class Mat:
     def orth_by_row(self):
         row_vecs =self.rows()
         return Mat.construct_by_rows(Vec.orthogonal(row_vecs))
+
+    def egi_val(self):
+        url = "http://www.yunsuanzi.com/cgi-bin/eigen_decomp.py"
+        text = egi.send_to_ysz(self.mat,url)
+        return egi.parse_egi_result(text)[0]
+
+    def egi_vecs(self):
+        url = "http://www.yunsuanzi.com/cgi-bin/eigen_decomp.py"
+        text = egi.send_to_ysz(self.mat,url)
+        return [Vec(vec) for vec in egi.parse_egi_result(text)[1]]
     def diagonal(self):
         return self.lower_tri().upper_tri()
     def inv(self):
@@ -168,7 +179,11 @@ class Mat:
         return mat
 
     def __str__(self):
-        return str(self.mat)
+        str_self = ""
+        for row in self.mat:
+            str_self += " ".join([str(num) for num in row])
+            str_self += "\n"
+        return str_self
 
     def check_pivot(self,i,dire=True):
         if self.mat[i][i] != 0:
@@ -191,4 +206,4 @@ mat = Mat("mat.txt")
 # inv = mat.inv()
 # Mat.write(inv.mat,"inv.txt")
 # print(mat.rightMul(inv).mat)
-print(mat.lower_tri())
+print(mat)
