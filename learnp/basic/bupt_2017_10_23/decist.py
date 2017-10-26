@@ -26,9 +26,9 @@ class Decis:
             mm = {}
             for data in datas:
                 # print(data[0])
-                a = mm.get(data[0],0)+1
-                mm[data[0]] = a
-                # mm[data[0]] = mm.get(mm[data[0]],0)+1
+                # a = mm.get(data[0],0)+1
+                # mm[data[0]] = a
+                mm[data[0]] = mm.get(data[0],0)+1
             max_cls,max_num = None,float("-inf")
             for key in mm:
                 if mm[key] > max_num:
