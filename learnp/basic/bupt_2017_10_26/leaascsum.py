@@ -11,7 +11,7 @@ def backt(l, i, j, cur, res, s1,s2):
     if 0 in (i,j):
         res.append(cur[::-1])
         return
-    if s1[j-1] == s2[i-1]:
+    if s1[j-1] == s2[i-1]:#here can't use l[i][j] == l[i-1][j-1] + 1 to judge,for l[i-1][j] or l[i][j-1] may ==l[i][j] but s1[i-1] != s2[j-1]
         cur.append(s1[j-1])
         print("s1[{}]:{}".format(j-1,s1[j-1]))
         backt(l,i-1,j-1,cur,res,s1,s2)
