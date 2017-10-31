@@ -20,9 +20,18 @@ class Vec:
 
     def sub(self,vec):
         return Vec([self.data[i]-vec.data[i] for i in range(len(vec.data))])
+    def __add__(self, other):
+        return Vec([self.data[i] + other.data[i] for i in range(len(self.data))])
+
+    def __mul__(self, other):
+        if isinstance(other,Vec):
+            return self.dotp(other)
+        elif isinstance(other,(int,float)):
+            return self.nump(other)
 
     def mol(self):
         return sqrt(reduce(lambda x,y:x+y,map(lambda x:x**2,self.data)))
+    
     def norm(self):
         mold = self.mol()
         vec = Vec([x/mold for x in self.data])

@@ -23,7 +23,7 @@ class Mat:
         except FileNotFoundError:
             self.mat = []
     def init_by_mat(self, mat):
-        self.mat = mat.mat[:]
+        self.mat = [[mat.mat[row][col] for col in range(len(mat.mat[0]))] for row in range(len(mat.mat))]
 
     def init_by_ndarray(self, ndarray):
         self.mat = ndarray[:]
@@ -81,7 +81,7 @@ class Mat:
         mat.mat = [[1 if col == row else 0 for col in range(n)] for row in range(n)]
         return mat
 
-    def leftMul(self,r_mat):
+    def _leftMul(self,r_mat):
         if len(self.mat[0]) != len(r_mat.mat):
             raise Exception("the col not equals that row")
         mat = Mat()
@@ -98,7 +98,28 @@ class Mat:
         # mat.mat = [list(map(lambda x,y:x * y,self.mat[i],[mat[j][i] for j in len(mat)] )) for i in range(len(self.mat))]
         return mat
 
-    def rightMul(self,l_mat):
+    def __mul__(self, other):
+        if isinstance(other,Mat):
+            return self._leftMul(other)
+        elif isinstance(other,(int,float)):
+            return Mat(ndarray=[[other * self.mat[row][col] for col in range(len(self.mat[0]))] for row in range(len(self.mat))])
+
+    def __rmul__(self, other):
+        if isinstance(other,Mat):
+            return self._rightMul(other)
+        elif isinstance(other,(int,float)):
+            return Mat(ndarray=[[other * self.mat[row][col] for col in range(len(self.mat[0]))] for row in range(len(self.mat))])
+
+    def __neg__(self):
+        return Mat(ndarray=[[-self.mat[row][col] for col in range(len(self.mat[0]))] for row in range(len(self.mat))])
+
+    def __add__(self, other):
+        res = Mat(ndarray=[[self.mat[row][col] + other.mat[row][col] for col in range(len(self.mat[0]))] for row in range(len(self.mat))])
+        return res
+    def __sub__(self, other):
+        return self + (-other)
+
+    def _rightMul(self,l_mat):
         return l_mat.leftMul(self)
 
     def write(mat,filename):
@@ -204,8 +225,8 @@ class Mat:
 # with open("mat.txt","w") as f:
 #     for i in range(3):
 #         f.write("1 2 3\n")
-mat = Mat("mat.txt")
+# mat = Mat("mat.txt")
 # inv = mat.inv()
 # Mat.write(inv.mat,"inv.txt")
 # print(mat.rightMul(inv).mat)
-print(mat.diagonal())
+# print(mat.diagonal())
