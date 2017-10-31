@@ -1,0 +1,1 @@
+http://xyq.cbg.163.com/cgi-bin/query.py?&act=query&server_id=769
