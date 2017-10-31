@@ -124,9 +124,9 @@ class Mat:
         if isinstance(item,int):
             return Mat(ndarray=[[self.mat[item][col] for col in range(len(self.mat[0]))]])
         elif isinstance(item,slice):
-            start = item.start if item.start != None else 0
-            stop = item.stop if item.stop != None else len(self.mat)
-            step = item.step if item.step != None else 1
+            start = item.start if item.start is not None else 0
+            stop = item.stop if item.stop is not None else len(self.mat)
+            step = item.step if item.step is not None else 1
             return Mat(ndarray=[[self.mat[row][col] for col in range(len(self.mat[0]))] for row in range(start,stop,step)])
     def _rightMul(self,l_mat):
         return l_mat.leftMul(self)
