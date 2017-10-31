@@ -71,9 +71,7 @@ class Mat:
                 mat.mat[j] = [( mat.mat[j][k] -  mat.mat[j][i] *  mat.mat[i][k] /  mat.mat[i][i]) for k in range(len( mat.mat[j]))]
         return mat
     def transpose(self):
-        mat = Mat()
-        mat.mat = [[self.mat[col][row] for col in range(len(self.mat[0]))] for row in range(len(self.mat))]
-        return mat
+        return Mat(ndarray=[[self.mat[col][row] for col in range(len(self.mat))] for row in range(len(self.mat[0]))])
 
 
     def generateE(n):
@@ -118,6 +116,9 @@ class Mat:
         return res
     def __sub__(self, other):
         return self + (-other)
+
+    def __truediv__(self, other):
+        return Mat(ndarray=[[self.mat[row][col] / other for col in range(len(self.mat[0]))]for row in range(len(self.mat))])
 
     def _rightMul(self,l_mat):
         return l_mat.leftMul(self)
