@@ -31,7 +31,7 @@ class Vec:
 
     def mol(self):
         return sqrt(reduce(lambda x,y:x+y,map(lambda x:x**2,self.data)))
-    
+
     def norm(self):
         mold = self.mol()
         vec = Vec([x/mold for x in self.data])
