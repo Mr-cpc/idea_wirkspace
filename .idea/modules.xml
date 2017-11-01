@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/idea_wirkspace.iml" filepath="$PROJECT_DIR$/idea_wirkspace.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learnp/learnp.iml" filepath="$PROJECT_DIR$/learnp/learnp.iml" />
     </modules>
   </component>
 </project>
