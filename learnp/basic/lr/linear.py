@@ -1,10 +1,18 @@
 import random
 from matplotlib.pyplot import *
+
+from basic.bupt_2017_10_19.mat import Mat
+
+
 class Linear(object):
     def __init__(self,params,points,learn_rate = 0.01):
         self.params = params[:]
         self.points = points[:]
         self.learn_rate = learn_rate
+        # x = Mat(ndarray = [point[:-1] for point in points])
+        # trans_x = x.transpose()
+        # b = Mat(ndarray = [[point[-1]] for point in points])
+        # self.params =  (trans_x * x).inv() * trans_x * b
 
     def set_learnrate(self, learn_rate):
         self.learn_rate = learn_rate
@@ -29,7 +37,7 @@ class Linear(object):
         for i in range(len(self.params)):
             change = 0
             for j in range(len(self.points)):
-                change += (self.mul(self.params,self.points[j][:len(self.points[j])-1]) - self.points[j][-1]) * self.points[j][i] // len(self.points)
+                change += (self.mul(self.params,self.points[j][:len(self.points[j])-1]) - self.points[j][-1]) * self.points[j][i] / len(self.points)
             self.params[i] -= self.learn_rate * change
 
     def ran_gradient_desc(self):
@@ -42,11 +50,12 @@ class Linear(object):
 params = [1,7]
 points = [[1,2,5],[1,3,8],[1,4,10]]
 linear = Linear(params,points)
-# linear.set_learnrate(0.001)
+print(linear.params)
+linear.set_learnrate(0.01)
 x = [i[1] for i in points]
 y = [i[2] for i in points]
 plot(x,y,"g^")
-for i in range(1000):
+for i in range(5000):
     print(linear.params)
     print(linear.compute_error())
     x = [ i[1] for i in linear.points]
