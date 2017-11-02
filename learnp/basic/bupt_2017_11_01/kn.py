@@ -5,7 +5,8 @@ from basic.bupt_2017_10_19.Vec import Vec
 
 class kn:
     def __init__(self,datas:list,k:int):
-        self.datas = [Vec(data[:-1]).norm() for data in datas]
+        self.datas = [Vec(data[:-1]) for data in datas]
+        Vec.sta(self.datas)
         self.lab = {self.datas[i]:datas[i][-1] for i in range(len(datas))}
         self.k = int(sqrt(len(datas))) if k > sqrt(len(datas)) else k
 
