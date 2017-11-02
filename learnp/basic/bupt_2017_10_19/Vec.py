@@ -37,7 +37,7 @@ class Vec:
         vec = Vec([x/mold for x in self.data])
         return vec
 
-    def orthogonal(vecs):
+    def orthogonal(vecs:list):
         orths = []
         for i in range(len(vecs)):
             vec = Vec(vecs[i].data)
@@ -45,5 +45,28 @@ class Vec:
                 vec = vec.sub(orths[j].nump(vecs[i].dotp(orths[j])/orths[j].dotp(orths[j])))
             orths.append(vec)
         return [vec.norm() for vec in orths]
+
+    def distance(self,vec):
+        if len(self.data) != len(vec.data):
+            raise Exception("dim not equals")
+        return sqrt(sum([(vec.data[i] - self.data[i])**2 for i in range(len(self.data))]))
+    '''
+    use xi-min(x) / max(x)-min(x) to standard vecs
+    '''
+    def sta(vecs:list) -> None:
+        maxes = [max([vecs[j].data[i] for j in range(len(vecs))]) for i in range(len(vecs[0].data))]
+        mines = [min([vecs[j].data[i] for j in range(len(vecs))]) for i in range(len(vecs[0].data))]
+        for i in range(len(vecs)):
+            for j in range(len(vecs[i].data)):
+                vecs[i].data[j] = (vecs[i].data[j] - mines[j]) / (maxes[j] - mines[j])
+
+
     def __str__(self):
         return str(self.data)
+
+
+a = [[i+j for i in range(3)] for j in range(3)]
+print(a)
+vecs = [Vec(row) for row in a]
+Vec.sta(vecs)
+print([i for i in vecs])
