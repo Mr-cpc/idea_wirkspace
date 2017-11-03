@@ -13,14 +13,14 @@ def slide(nums,k):
     res = 0
     while r < len(nums):
         pro *= nums[r]
-        r+=1
-        while pro > k:
+        while pro >= k:
             pro /= nums[l]
             l+=1
         res += r - l +1
+        r+=1
     return res
     #
     # pass
-res = subaprodlek([10,5,2,6],100)
-print(slide([10,5,2,6],100))
+res = subaprodlek([10,5,2,6],50)
+print(slide([10,5,2,6],50))
 print(len(res))
