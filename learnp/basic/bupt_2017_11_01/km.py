@@ -10,7 +10,8 @@ class Km:
     3.更新每个类别的centroid(通过求该类别所有sample的算术平均)，若质心几乎无变化，则完成;否则，返回2
     '''
     def __init__(self,k,datas):
-        self.datas = [Vec(data) for data in datas]
+        self.datas = [Vec(data[:-1]) for data in datas]
+        self.lab = {self.datas[i]:datas[i][-1] for i in range(len(datas))}
         Vec.sta(self.datas)
         # ini_centers = [self.datas[random.randint(0,len(self.datas)-1)] for i in range(k)]
         ini_centers = random.sample(self.datas,k)
