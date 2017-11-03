@@ -3,6 +3,7 @@ from functools import reduce
 
 from math import sqrt
 
+import math
 
 
 class Vec:
@@ -60,6 +61,14 @@ class Vec:
             for j in range(len(vecs[i].data)):
                 vecs[i].data[j] = (vecs[i].data[j] - mines[j]) / (maxes[j] - mines[j])
 
+    def get_clustercenter(vecs:list):
+        return Vec([sum([vecs[j].data[i] for j in range(len(vecs))])/len(vecs) for i in range(len(vecs[0].data))])
+
+    def is_converg(v1:list,v2:list,error:float):
+        for i in range(len(v1)):
+            if v1[i].distance(v2[i]) > error:
+                return False
+        return True
 
     def __str__(self):
         return str(self.data)
@@ -68,5 +77,5 @@ class Vec:
 a = [[i+j for i in range(3)] for j in range(3)]
 print(a)
 vecs = [Vec(row) for row in a]
-Vec.sta(vecs)
-print([i for i in vecs])
+c = Vec.get_clustercenter(vecs)
+print(c)
