@@ -38,13 +38,13 @@ class Mat:
         # for col in range(len(self.mat[0])):
         #     l.append( ColVec( [self.mat[y][col] for y in range(len(self.mat))] ) )
         return self.transpose().rows()
-    def construct_by_rows(rows):
+    def construct_by_rows(rows:list):
         mat = Mat()
         for row in rows:
             mat.mat.append([x for x in row.data])
         return mat
 
-    def conconstruct_by_cols(cols):
+    def conconstruct_by_cols(cols:list):
         return Mat.construct_by_rows(cols).transpose()
 
     def det(self):
