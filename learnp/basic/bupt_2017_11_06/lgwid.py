@@ -18,10 +18,13 @@ class TrieNo:
         flag = True
         for id,ch in enumerate(word):
             chd = root.getCh(ch)
-            if chd is None:
+            if chd is None :
                 flag = False if id != len(word) - 1 else flag
                 chd = TrieNo(ch)
                 root.chdts[ch] = chd
+            else:
+                if not hasattr(chd,"isEnd"):
+                    flag = False
             root = chd
         root.isEnd = True
         return flag
@@ -44,11 +47,14 @@ class TrieNo:
         return hasattr(root,"isEnd") and root.isEnd
 
 trie = TrieNo(" ")
+cal = lambda s:sum([(ord(s[i])-97) * (26 **(len(s)-i-1)) for i in range(len(s))])
+print(cal("otif"))
+print(cal("racy"))
 # words = ["a","apply","app","ap","appl","apple","appla"]
-words = ["ab","ac"]
-words.sort()
-words.sort(key=lambda x:(len(x),-sum([ord(x[i]) * (2 **(len(x)-i-1)) for i in range(len(x))])))
+words = ["rac","rs","ra","on","r","otif","o","onpdu","rsf","rs","ot","oti","racy","onpd"]
+words.sort(key=lambda x:(len(x),-cal(x)))
+print(words)
 res,w = 0,""
 for id,word in enumerate(words):
-    res,w = id,word if trie.insert(word) else (res,w)
-print(res,w)
+    res,w = (id,word) if trie.insert(word) else (res,w)
+print(w)
