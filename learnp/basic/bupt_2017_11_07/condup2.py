@@ -1,7 +1,11 @@
 def condup2(nums:list,k:int) ->bool:
-    for i in range(len(nums)-k):
-        for j in range(i+1,i+k+1):
-            if nums[i] == nums[j]:
+    d = {}
+    for idx,num in enumerate(nums):
+        if num not in d:
+            d[num] = idx
+        else:
+            if idx - d[num] <= k:
                 return True
+            else:
+                d[num] = idx
     return False
-
