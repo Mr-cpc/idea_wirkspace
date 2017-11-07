@@ -1,5 +1,4 @@
 def ishpn(n:int) ->bool:
-    last_n = n
     while True:
         nums = [int(x) for x in str(n)]
         last_n = n
