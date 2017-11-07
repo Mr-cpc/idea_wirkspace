@@ -10,7 +10,7 @@ def find(idx, i):
     if rem == 0:
         return int(str(start + quo-1)[-1])
     else:
-        return int(str(start + quo)[rem])
+        return int(str(start + quo)[rem-1])
 
 '''
 对于每一个i位数，共有9 * 10**(i-1)*i个数字，这个公式是数数的核心
@@ -25,4 +25,4 @@ def f(n:int) -> int:
             return find(idx,i)
         i += 1
 
-print(f(5))
+print(f(10))
