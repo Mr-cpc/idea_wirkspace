@@ -33,17 +33,18 @@ def get_bin_time_str(h:list,time:list):
     return res
 
 
-def biwa(n:int)->list:
+def biwa(num:int)->list:
     h = [0] * 4
     m = [0] * 6
     res = []
-    for i in range(0,n+1):
+    for i in range(0,num+1):
         num_h = get_bin_time_str(com(4,i),h)
-        num_m = get_bin_time_str(com(6,n-i),m)
+        num_m = get_bin_time_str(com(6,num-i),m)
         for hour in num_h:
             for mte in num_m:
                 hour_dec,mte_dec = int(hour,2),int(mte,2)
                 if hour_dec < 12 and mte_dec < 60:
-                    res.append("{}:{}".format(str(hour_dec).zfill(2),str(mte_dec).zfill(2)) )
+                    res.append("{}:{}".format(hour_dec,str(mte_dec).zfill(2)) )
     return res
 
+print(biwa(0))
