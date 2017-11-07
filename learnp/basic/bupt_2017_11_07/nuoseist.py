@@ -1,6 +1,8 @@
 def numoseginstr(s:str) ->int:
     res = 1
     s = s.strip()
+    if s == "":
+        return  0
     i = 0
     while i < len(s):
         if s[i] != " ":
@@ -10,3 +12,4 @@ def numoseginstr(s:str) ->int:
             while s[i] in (" ","\t"):
                 i += 1
     return res
+
