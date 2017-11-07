@@ -12,7 +12,9 @@ def find(idx, i):
     else:
         return int(str(start + quo)[rem])
 
-
+'''
+对于每一个i位数，共有9 * 10**(i-1)*i个数字，这个公式是数数的核心
+'''
 def f(n:int) -> int:
     i,count = 0,0
     while True:
