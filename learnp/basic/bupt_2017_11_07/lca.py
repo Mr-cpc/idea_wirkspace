@@ -26,15 +26,16 @@ def par(nd1:Node,nd2:Node,root:Node):
 
         root = s.pop()
         if nd1 in (root.left,root.right):
-            res.append(nd1)
+            res.append(root)
+            print(nd1.val)
             if len(res) == 2:
                 return tuple(res)
         if nd2 in (root.left,root.right):
-            res.append(nd2)
+            res.append(root)
+            print(nd2.val)
             if len(res) == 2:
                 return tuple(res)
-        else:
-            root = root.right
+        root = root.right
 
 
 
@@ -53,6 +54,13 @@ def lca(nd1:Node,nd2:Node,root:Node) ->Node:
 
 
 
+rt = Node(1)
+left = Node(2)
+right = Node(3)
+rt.left = left
+rt.right = Node(3)
+
+print(lca(rt.left,rt.right,rt).val)
 
 
 
