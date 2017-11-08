@@ -6,51 +6,70 @@ class Node(object):
         self.val = val
 
 
+def traverse(root:Node, res:list,nd:Node,cur):
+    if root is None or len(res) == 1:
+        return
+    elif root is nd:
+        res.append(cur[:])
+    else:
+        cur.append(root)
+        traverse(root.left,res,nd,cur[:])
+        traverse(root.right,res,nd,cur[:])
 
 
-
-
-
-
-
-
-
-
-def par(nd1:Node,nd2:Node,root:Node):
-    s = []
+def find_path(nd:Node,root:Node) -> list:
     res = []
-    while len(s) or root is not None:
-        while root is not None:
-            s.append(root)
-            root = root.left
+    traverse(root,res,nd,[])
+    return res[0]
 
-        root = s.pop()
-        if nd1 in (root.left,root.right):
-            res.append(root)
-            print(nd1.val)
-            if len(res) == 2:
-                return tuple(res)
-        if nd2 in (root.left,root.right):
-            res.append(root)
-            print(nd2.val)
-            if len(res) == 2:
-                return tuple(res)
-        root = root.right
+
+
+
+
+'''
+really silly,search the par the same time has no meaning only if the nd1 and nd2 are on the same level
+'''
+# def par(nd1:Node,nd2:Node,root:Node):
+#     s = []
+#     res = []
+#     while len(s) or root is not None:
+#         while root is not None:
+#             s.append(root)
+#             root = root.left
+#
+#         root = s.pop()
+#         if nd1 in (root.left,root.right):
+#             res.append(root)
+#             print(nd1.val)
+#             if len(res) == 2:
+#                 return tuple(res)
+#         if nd2 in (root.left,root.right):
+#             res.append(root)
+#             print(nd2.val)
+#             if len(res) == 2:
+#                 return tuple(res)
+#         root = root.right
 
 
 
 
 def lca(nd1:Node,nd2:Node,root:Node) ->Node:
     if nd2 in (nd1.left,nd1.right):
-        return nd1
+        return nd1.val
     elif nd1 in (nd2.left,nd2.right):
-        return nd2
+        return nd2.val
+    elif nd1 is root:
+        return nd1.val
+    elif nd2 is root:
+        return nd2.val
     else:
-        pars = par(nd1,nd2,root)
-        if pars[0] is pars[1]:
-            return pars[0]
-        else:
-            return lca(pars[0],pars[1],root)
+        path1 = find_path(nd1,root)
+        path2 = find_path(nd2,root)
+        path1,path2 = (path1,path2) if len(path1) <= len(path2) else (path2,path1)
+        while len(path1):
+            node = path1.pop()
+            if node in path2:
+                return node.val
 
 
 
@@ -60,7 +79,7 @@ right = Node(3)
 rt.left = left
 rt.right = Node(3)
 
-print(lca(rt.left,rt.right,rt).val)
+print(lca(rt.left,rt.right,rt))
 
 
 
