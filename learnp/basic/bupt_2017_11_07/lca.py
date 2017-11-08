@@ -6,7 +6,7 @@ class Node(object):
         self.val = val
 
 
-def traverse(root:Node, res:list,nd:Node,cur):
+def traverse(root:Node, res:list,nd:Node,cur:list):
     if root is None or len(res) == 1:
         return
     elif root is nd:
@@ -23,8 +23,20 @@ def find_path(nd:Node,root:Node) -> list:
     return res[0]
 
 
+def find_paths(nds:set,root:Node) ->list:
+    res = []
+    traverse(root,res,nds,[])
+    return res
 
-
+def traverses(root:Node, res:list,nds:set,cur:list):
+    if root is None or len(res) == len(nds):
+        return
+    elif root in nds:
+        res.append(cur[:])
+    else:
+        cur.append(root)
+        traverses(root.left,res,nds,cur[:])
+        traverses(root.right,res,nds,cur[:])
 
 '''
 really silly,search the par the same time has no meaning only if the nd1 and nd2 are on the same level
