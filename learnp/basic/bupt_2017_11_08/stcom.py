@@ -23,7 +23,9 @@ def stcom(chars:list)->(list,int):
             new_chars.extend(d[i])
             i += int("".join(d[i]))
 
+    for i in range(len(new_chars)):
+        chars[i] = new_chars[i]
     return new_chars,len(new_chars)
 
 
-print(stcom(list("aaabbccc")))
+print(stcom(list("aabbccc")))
