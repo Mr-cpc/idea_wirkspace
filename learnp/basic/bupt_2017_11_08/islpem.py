@@ -7,7 +7,6 @@ def dfs(grid:list, pos:tuple, s:set):
         s.add(pos)
         for i in (-1,1):
             dfs(grid,(pos[0]+i,pos[1]),s)
-        for i in (-1,1):
             dfs(grid,(pos[0],pos[1]+i),s)
 
 def islpem(grid:list) ->int:
@@ -19,7 +18,15 @@ def islpem(grid:list) ->int:
             if grid[i][j] != 0:
                 dfs(grid,(i,j),s)
                 break
-    return len(s) * 2 + 2
+    ans = 0
+    for pos in s:
+        ans += 4
+        for i in (-1,1):
+            if (pos[0]+i,pos[1]) in s:
+                ans -= 1
+            if (pos[0],pos[1]+i) in s:
+                ans -= 1
+    return ans
 
-g = [[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]]
-print(len(islpem(g)))
+g = [[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1]]
+print(islpem(g))
