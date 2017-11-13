@@ -6,12 +6,14 @@ def asco(g:list,s:list) -> int:
     heapq.heapify(g)
     s.sort()
     for i in s:
-        if g[0] <= i:
+        if not len(g):
+            break
+        elif g[0] <= i:
             ans += 1
             heapq.heappop(g)
     return ans
 
 
-g = [1,2,3]
-s = []
+g=[10,9,8,7]
+s=[5,6,7,8]
 print(asco(g,s))
