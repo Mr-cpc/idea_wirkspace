@@ -5,6 +5,4 @@ def miidxsuoftwolis(list1:list,list2:list) ->list:
     min_v = len(list1) + len(list2)
     for key in d3:
         min_v = min(min_v,d3[key])
-    for key in d3:
-        min_v = min(min_v,d3[key])
     return [key for key in d3 if d3[key] == min_v]
