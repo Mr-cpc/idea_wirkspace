@@ -15,9 +15,10 @@ def flower(flowerbed:list,n:int) ->bool:
         else:
             if left_can_place(i,flowerbed) and rigth_can_place(i,flowerbed):
                 n -= 1
+                flowerbed[i] = 1
             else:
                 continue
 
-    return False
+    return n == 0
 
-print(flower([1,0,0,0,1],2))
+print(flower([1,0,0,0,1,0,0],2))
