@@ -11,8 +11,6 @@ def time_statistic(fun):
     return wrapper
 
 @time_statistic
-def myfun():
+def myfun(a):
     time.sleep(1)
     print("a")
-
-myfun()
