@@ -1,11 +1,13 @@
 import time
 
+
 def time_statistic(fun):
-    def wrapper():
+    def wrapper(*args,**kwargs):
         st = time.time()
-        fun()
+        res = fun(*args,**kwargs)
         en = time.time()
         print("spend time {}ms".format((en -st)))
+        return res
     return wrapper
 
 @time_statistic
