@@ -31,8 +31,10 @@ def dfs(s:str, ans:list, cur:list):
 
 
 def restoip(s:str) -> list:
+    if len(s) > 12:
+        return []
     ans = []
     dfs(s,ans,[])
     return ans
 
-print(restoip("11110"))
+print(restoip("882456854658"))
