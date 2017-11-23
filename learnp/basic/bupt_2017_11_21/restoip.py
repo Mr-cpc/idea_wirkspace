@@ -10,7 +10,7 @@ def dfs(s:str, ans:list, cur:list):
             copy = cur[:]
             copy.extend(s)
             ans.append(copy)
-        elif len(cur) == 3:
+        elif len(cur) == 3 and s[0] != "0" and 0 < int(s[:3]) <= 255:
             copy = cur[:]
             copy.append(s)
             ans.append(copy)
@@ -20,9 +20,10 @@ def dfs(s:str, ans:list, cur:list):
         copy1 = cur[:]
         copy1.append(s[0])
         dfs(s[1:],ans,copy1)
-        copy1 = cur[:]
-        copy1.append(s[:2])
-        dfs(s[2:],ans,copy1)
+        if s[0] != '0':
+            copy1 = cur[:]
+            copy1.append(s[:2])
+            dfs(s[2:],ans,copy1)
         if s[0] != '0' and 0 < int(s[:3]) <= 255:
             copy1 = cur[:]
             copy1.append(s[:3])
@@ -35,6 +36,6 @@ def restoip(s:str) -> list:
         return []
     ans = []
     dfs(s,ans,[])
-    return ans
+    return [".".join(i) for i in ans]
 
-print(restoip("882456854658"))
+print(restoip("172162541"))
