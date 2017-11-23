@@ -3,8 +3,8 @@ from basic.bupt_2017_10_18.ptkes import n_comb
 
 def worbk(s:str,wordDict:list) -> bool:
     wordDict = set(wordDict)
-    if len(s) == 1:
-        return s in wordDict
+    if s in wordDict:
+        return True
     for i in range(1,len(s)):
         candis = n_comb(list(range(1,len(s))),i)
         for parti in candis:
@@ -19,4 +19,4 @@ def worbk(s:str,wordDict:list) -> bool:
                 return True
     return False
 
-print(worbk("helloworld",["hello","world"]))
+print(worbk("apple",["pear","apple","peach"]))
