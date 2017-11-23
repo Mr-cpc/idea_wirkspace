@@ -86,8 +86,8 @@ def canbekequparti(nums,k):
     else:
         return canbe(nums,k,[0]*k,[nums_sum // k]*k)
 
-res = contigious_k_parti([1,2,3,4],2)
-a = [[1,2],[1,2,3]]
-b = [1,2]
+# res = contigious_k_parti([1,2,3,4],2)
+# a = [[1,2],[1,2,3]]
+# b = [1,2]
 # print_secondstiring("second_stiring.txt",10)
-print(count_k_parti(25,10))
+# print(count_k_parti(25,10))
