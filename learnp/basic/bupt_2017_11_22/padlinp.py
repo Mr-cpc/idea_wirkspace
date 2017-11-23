@@ -1,10 +1,14 @@
 from basic.bupt_2017_10_18.ptkes import n_comb
+from basic.bupt_2017_10_30.deco import time_statistic
 
 
+@time_statistic
 def padlinp(s:str):
     if len(s) == 1:
         return [[s]]
     ans = []
+    if s == s[:][::-1]:
+        ans.append([s])
     for i in range(1,len(s)):
         candis = n_comb(list(range(1,len(s))),i)
         for parti in candis:
@@ -22,4 +26,4 @@ def padlinp(s:str):
                 ans.append(candi)
     return ans
 
-print(padlinp("abcba"))
+print(padlinp("amanaplanacanalpanama"))
