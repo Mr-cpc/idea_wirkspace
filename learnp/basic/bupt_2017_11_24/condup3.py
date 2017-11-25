@@ -9,12 +9,21 @@ def condup3(nums:list,k:int,t:int) -> bool:
 
 
 def condup_3(nums:list,k:int,t:int):
+    if t < 0:
+        return False
     bst = Bst(k,t)
     for idx,num in enumerate(nums):
         if bst.insert(TreeNode((num,idx))):
             return True
     else:
         return False
+
+
+class TreeNode(object):
+    def __init__(self,val:tuple):
+        self.val = val  #(num,idx)
+        self.left = self.right = None
+
 
 class Bst:
     def __init__(self,k,t):
@@ -48,8 +57,20 @@ class Bst:
                     parent = rt
                     rt = rt.right
         if node.val[0] < parent.val[0]:
+            rt = parent.right
+            while rt is not None:
+                if rt.val[0] - node.val[0] <= self.t and node.val[1] - rt.val[1] <= self.k:
+                    return True
+                else:
+                    rt = rt.left
             parent.left = node
         else:
+            rt = parent.left
+            while rt is not None:
+                if node.val[0] - rt.val[0] <= self.t and node.val[1] - rt.val[1] <= self.k:
+                    return True
+                else:
+                    rt = rt.right
             parent.right = node
         return False
 
@@ -69,6 +90,7 @@ class Bst:
 
 
 
+print(condup_3([10,100,11,9],1,2))
 
 
 
@@ -82,10 +104,6 @@ class Bst:
 
 
 
-class TreeNode(object):
-    def __init__(self,val:tuple):
-        self.val = val  #(num,idx)
-        self.left = self.right = None
 
 
 
