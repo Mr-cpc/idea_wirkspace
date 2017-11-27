@@ -16,9 +16,9 @@ class Login:
         self.session = requests.session()
     def login(self):
         r = self.session.post(self.login_url,self.data,headers = self.login_headers)
-        print(r.text)
+        # print(r.text)
 
     def logout(self):
-        print(self.logout_url)
+        # print(self.logout_url)
         r = self.session.get(self.logout_url,headers = self.login_headers)
-        print(r.text)
+        # print(r.text)
