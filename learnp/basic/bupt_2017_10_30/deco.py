@@ -6,7 +6,7 @@ def time_statistic(fun):
         st = time.time()
         res = fun(*args,**kwargs)
         en = time.time()
-        print("spend time: {}s".format((en -st)))
+        print("{}() function spend time: {}s".format(fun.__name__,(en -st)))
         return res
     return wrapper
 
