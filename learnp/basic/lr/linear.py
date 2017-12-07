@@ -47,15 +47,17 @@ class Linear(object):
 
     def predict(self,point):
         return self.mul(self.params,point)
-params = [1,7]
-points = [[1,2,5],[1,3,8],[1,4,10]]
+params = [4.85,0.00004]
+points = [[1,12240,4.9],[1,27195,5.8],[1,37675,6.5],[1,50962, 7.3],[1,55805 ,7.2]]
 linear = Linear(params,points)
 print(linear.params)
-linear.set_learnrate(0.01)
+# learn_rate = 0.00000001 这个就会发散
+learn_rate = 0.000000001 #这个就能成功收敛，两者仅差一个小数点
+linear.set_learnrate(learn_rate)
 x = [i[1] for i in points]
 y = [i[2] for i in points]
 plot(x,y,"g^")
-for i in range(5000):
+for i in range(10000):
     print(linear.params)
     print(linear.compute_error())
     x = [ i[1] for i in linear.points]
