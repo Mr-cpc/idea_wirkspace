@@ -3,7 +3,7 @@ import heapq
 from basic.bupt_2017_10_19.Vec import Vec
 
 
-class kn:
+class Kn:
     def __init__(self,datas:list,k:int):
         self.datas = [Vec(data[:-1]) for data in datas]
         Vec.sta(self.datas)
