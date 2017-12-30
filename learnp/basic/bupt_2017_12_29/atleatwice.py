@@ -16,15 +16,15 @@ Time:15:27
 '''
 def atleasttwice(nums:list) -> int:
     if len(nums) == 1:
-        return -1
+        return 0
     max_num,sec_num,max_num_idx = (nums[0],nums[1],0) if nums[0] > nums[1] else (nums[1],nums[0],1)
-    for i,num in enumerate(nums,2):
-        if num > max_num:
-            sec_num,max_num,max_num_idx = max_num,num,i
-        elif num >= sec_num:
-            sec_num = num
+    for i in range(2,len(nums)):
+        if nums[i] > max_num:
+            sec_num,max_num,max_num_idx = max_num,nums[i],i
+        elif nums[i] > sec_num:
+            sec_num = nums[i]
         else:
             pass
     return max_num_idx if max_num >= (sec_num << 1) else -1
 
-print(atleasttwice(nums = [1,2,3,4]))
+print(atleasttwice(nums = [1,0]))
