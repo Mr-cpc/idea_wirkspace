@@ -1,3 +1,4 @@
+import collections
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -16,14 +17,19 @@ Time:17:01
 '''
 
 
-def get_max(group):
-    if (len(group) & 1) == 1:
-        return sum(group[::2])
-    else:
-        return sum()
+def get_max(group,counter:collections.Counter):
+    choose_one ,choose_two = 0, 0
+    for i in range(0,len(group),2):
+        choose_one += counter[group[i]] * group[i]
+    for j in range(1,len(group),2):
+        choose_two += counter[group[j]] * group[j]
+    return max(choose_one,choose_two)
 
-
-def delandearn(nums:list) ->int:
+def delandearn(nums) ->int:
+    from collections import Counter
+    counter = Counter(nums)
+    nums = list(set(nums))
+    print("set后的nums：{}".format(nums))
     uf = UF(nums)
     for i in range(len(nums)):
         for j in range(i+1,len(nums)):
@@ -34,8 +40,7 @@ def delandearn(nums:list) ->int:
     d = defaultdict(list)
     for i,value in enumerate(uf.id):
         d[value].append(nums[i])
-    print(d)
-    return sum(get_max(group) for group in d.values())
+    return sum(get_max(group,counter) for group in d.values())
 class UF:
     def __init__(self,nums):
         self.count = len(nums)
@@ -53,5 +58,5 @@ class UF:
             self.id[y] = self.id[x]
             self.count -= 1
 
-nums = [1,2,4,5,7,8,9,11,12]
-delandearn(nums)
+nums = [2,2,3,3,3,4,4]
+print(delandearn(nums))
