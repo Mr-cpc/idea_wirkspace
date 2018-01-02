@@ -16,6 +16,7 @@ Time:14:44
 '''
 def atleatwo(intervals:list) ->int:
     intervals.sort(key=lambda itv:(itv[1],itv[0]))
+    print(intervals)
     ans = 2
     prev_end = intervals[0][-1]
     for i in range(1,len(intervals)):
@@ -28,4 +29,5 @@ def atleatwo(intervals:list) ->int:
             ans += 2
             prev_end = intervals[i][-1]
     return ans
-print(atleatwo(intervals =  [[1, 2], [2, 3], [2, 4], [4, 5]]))
+print(atleatwo(intervals =  [[8,9],[4,21],[3,19],[5,9],[1,5]]))
+# std 4
