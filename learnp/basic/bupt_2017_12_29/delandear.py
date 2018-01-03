@@ -18,24 +18,26 @@ Time:17:01
 
 
 def get_max(group,counter:collections.Counter):
-    choose_one ,choose_two = 0, 0
-    for i in range(0,len(group),2):
-        choose_one += counter[group[i]] * group[i]
-    for j in range(1,len(group),2):
-        choose_two += counter[group[j]] * group[j]
-    return max(choose_one,choose_two)
+    # for i in range(len(group)):
+    #     group[i] *= counter[group[i]]
+    dp = [0] * (len(group)+1)
+    dp[1] = group[0] * counter[group[0]]
+    for i in range(2,len(dp)):
+        dp[i] = max(dp[i-1],dp[i-2] + group[i-1] * counter[group[i-1]])
+    return dp[-1]
 
 def delandearn(nums) ->int:
     from collections import Counter
     counter = Counter(nums)
+    # print(counter)
     nums = list(set(nums))
-    print("set后的nums：{}".format(nums))
+    # print("set后的nums：{}".format(nums))
     uf = UF(nums)
     for i in range(len(nums)):
         for j in range(i+1,len(nums)):
             if (nums[j] - nums[i]) in (1,-1):
                 uf.union(i,j)
-    print('finally {} groups'.format(uf.count))
+    # print('finally {} groups'.format(uf.count))
     from collections import defaultdict
     d = defaultdict(list)
     for i,value in enumerate(uf.id):
