@@ -19,19 +19,19 @@ def floodfill(image:list,sr:int,sc:int,newColor:int):
     q = deque()
     q.append((sr,sc))
     start_color = image[sr][sc]
+    s = set()
     while len(q):
         cur = q.popleft()
+        s.add(cur)
         if image[cur[0]][cur[1]] == start_color:
             image[cur[0]][cur[1]] = newColor
             for i in (1,-1):
-                if 0 <= cur[0] + i < len(image):
+                if 0 <= cur[0] + i < len(image) and image[cur[0]+i][cur[1]] == start_color and (cur[0]+i,cur[1]) not in s:
                     q.append((cur[0]+i,cur[1]))
-                if 0 <= cur[1] + i < len(image[0]):
+                if 0 <= cur[1] + i < len(image[0]) and image[cur[0]][cur[1]+i] == start_color and (cur[0],cur[1]+i) not in s:
                     q.append((cur[0],cur[1]+i))
     return image
 
 
 
-
-print(floodfill(image = [[1,1,1],[1,1,0],[1,0,1]],
-sr = 1, sc = 1, newColor = 2))
+print(floodfill([[0,0,0],[0,1,1]],1,1,1))
