@@ -59,6 +59,6 @@ def add(l1,l2):
             nod = nod.next
         return reverse(ans.next)
 
-l1 = condtruct([3,9,5])
-l2 = condtruct([9,4,3])
-print(tostring(add(l1,l2)))
+# l1 = condtruct([3,9,5])
+# l2 = condtruct([9,4,3])
+# print(tostring(add(l1,l2)))
