@@ -31,7 +31,7 @@ def acountmeg(accounts:list):
         d_ = defaultdict(list)
         for i,value in enumerate(uf.id):
             d_[value].append(accountss[i])
-        # print(d_)
+        print(d_)
         for value in d_.values():
             cur = [name]
             s = set()
