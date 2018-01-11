@@ -23,14 +23,21 @@ def largrectinhist(heights:list):
 def method_2(heights:list):
     stk = []
     ans = 0
+    heights.append(0)
     for i in range(len(heights)):
         if len(stk):
             if heights[i] >= heights[stk[-1]]:
                 stk.append(i)
             else:
-                ans = max(ans,len(stk) * stk[0])
-                stk = [i]
+                while len(stk) and heights[i] < heights[stk[-1]]:
+                    cur = stk.pop()
+                    left = stk[-1]  if len(stk) else -1
+                    ans = max(ans,(i - left - 1) * heights[cur])
+                stk.append(i)
         else:
             stk.append(i)
+
+
     return ans
-print(method_2([2,1,5,6,2,3]))
+# print(method_2([2,1,5,6,2,3]))
+print(method_2([200,1,5,100,99,300,500]))
