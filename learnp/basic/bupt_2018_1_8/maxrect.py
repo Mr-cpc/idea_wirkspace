@@ -23,11 +23,20 @@ def maxrect(matrix:list):
     for i in range(len(matrix)):
         heights[i] = [0] * len(matrix[0])
         for j in range(len(matrix[0])):
-            heights[i][j] = Counter(matrix[k][j] for k in range(i))[1]
+            if matrix[i][j] == '0':
+                heights[i][j] = 0
+            else :
+                heights[i][j] = 1
+                for k in range(i-1,-1,-1):
+                    if matrix[k][j] == matrix[k+1][j]:
+                        heights[i][j] += 1
+                    else:
+                        break
     return max(method_2(height) for height in heights)
 
 
-print(maxrect([[1,1,1,0,0],
-               [1,1,1,0,1],
-               [1,1,1,1,1],
-               [1,0,0,1,0]]))
+print(maxrect([["1","0","1","1","1"],
+               ["0","1","0","1","0"],
+               ["1","1","0","1","1"],
+               ["1","1","0","1","1"],
+               ["0","1","1","1","1"]]))
