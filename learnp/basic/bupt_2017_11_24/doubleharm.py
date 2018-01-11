@@ -21,7 +21,7 @@ def query():
             a = pattern.match(content[ppt['main_attr']])
             b= Counter(content[ppt['down']][0].split(' '))[ppt['harm']] >= 2
             if a and b:
-                print(content,file=f)
+                print('price:{},main:{},down:{}'.format(content['price'],content[ppt['main_attr']],content[ppt['down']]),file=f)
 def printtime():
     print(datetime.now())
 def timer_task():
@@ -29,5 +29,6 @@ def timer_task():
     timer.start()
 
 while True:
-    time.sleep(5)
-    printtime()
+
+    query()
+    time.sleep(100)
