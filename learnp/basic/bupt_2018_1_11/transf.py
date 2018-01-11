@@ -19,6 +19,7 @@ def transf(query_str:str):
     query_str =  re.sub(r'&',r',',query_str)
     query_str =  re.sub(r'=',r':',query_str)
     query_str = re.sub(r'([a-zA-Z0-9%_]*)(:)([a-zA-Z0-9%_.\-]*)',r'"\1"\2"\3"',query_str)
+    query_str =re.sub(r'%',r'%25',query_str)
     return query_str
 
 print(transf('orderby=selling_time%20DESC&act=super_query&search_type=overall_lingshi_search&equip_level_min=80&equip_level_max=100&kindid=61&damage=1&added_attr_logic=and&added_attr=2&added_attr_repeat_num=2&server_type=3&page=8&platform=ios&app_version=2.3.2&device_name=My%20iPhone&os_name=iPhone%20OS&os_version=9.3.3&device_id=10272229-E368-4457-95B9-427D8EEDA461'))
