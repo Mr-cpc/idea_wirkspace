@@ -21,6 +21,8 @@ Time:15:14
 @time_statistic
 def wordlad2(beginWord:str,endWord:str,wordList:list) -> list:
     from collections import deque,namedtuple
+    if endWord not in wordList:
+        return []
     q = deque()
     Status = namedtuple('Status',['val','step','prev'])
     q.append(Status(beginWord,0,None))
@@ -57,7 +59,8 @@ def next_words(cur_word:str,wordList:list) -> list:
                 if dif > 1:
                     break
         else:
-            nexts.append(word)
+            if dif == 1:
+                nexts.append(word)
     return nexts
 # def next_words(cur_word:str,wordList:list) -> list:
 #     nexts = []
@@ -68,6 +71,6 @@ def next_words(cur_word:str,wordList:list) -> list:
 #             nexts.append(word)
 #     return nexts
 
-print(wordlad2(beginWord = "hit",
-endWord = "cog",
-wordList = ["hot","dot","dog","lot","log","cog"]))
+print(wordlad2(beginWord = "qa",
+endWord = "sq",
+wordList = ["si","go","se","cm","so","ph","mt","db","mb","sb","kr","ln","tm","le","av","sm","ar","ci","ca","br","ti","ba","to","ra","fa","yo","ow","sn","ya","cr","po","fe","ho","ma","re","or","rn","au","ur","rh","sr","tc","lt","lo","as","fr","nb","yb","if","pb","ge","th","pm","rb","sh","co","ga","li","ha","hz","no","bi","di","hi","qa","pi","os","uh","wm","an","me","mo","na","la","st","er","sc","ne","mn","mi","am","ex","pt","io","be","fm","ta","tb","ni","mr","pa","he","lr","sq","ye"]))
