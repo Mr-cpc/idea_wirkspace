@@ -67,7 +67,7 @@ class CBG:
 
 ppt = PptHelper()
 def tianshiquery():
-    query = CBG(ppt['global_angel_zhu_url'])
+    query = CBG(ppt['global_angeljiuwei_url'])
     i = 0
     all_roles = []
     qinghua = []
