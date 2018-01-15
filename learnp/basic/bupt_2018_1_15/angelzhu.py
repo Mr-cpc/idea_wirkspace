@@ -23,15 +23,40 @@ class CBG:
     def __init__(self,url:str):
         self.url = url
         headers = {'User-Agent': 'xyqcbg2/2.3.2 CFNetwork/758.5.3 Darwin/15.6.0'}
-        cookies={"device_id":"10272229-E368-4457-95B9-427D8EEDA461", "sid":"sN-FxhNkASiyOmcEF0pKaaFgGeitMOQsxE-S9TLW"}
+        cookies = {"device_id":"10272229-E368-4457-95B9-427D8EEDA461", "sid":"Ieqh_xBURWcRSFIXx_mv80c1cQoj9pY6PZP5U1Ib", "NTES_SESS":"htGIQEPHahQqM5WvOLSUa7WxTZgng2S1mMOeyBLpy8lDBhbjjfx80JKEDDF7FBf4_rqVLnr9t1POyRnauOas06dmfqE9glNk87h7NkpsFU9tdd0lriXv1dTFh7weY5dqYFOdhGvVOpVeLrfc8NH7N7lmzr3Nm4hQAOEcNkNRLlLo4Q84JiG.PP9lY2siR3oyyyCkZvgC95RQ9PrA.7yZm2cIZ", "_ga":"GA1.2.2096250666.1513858580", "_ntes_nnid":"ecaac034c11f75726577b33dbb2c28ae,1514797131942", "_ntes_nuid":"ecaac034c11f75726577b33dbb2c28ae"}
         self.cookies = cookies
         self.headers = headers
-
+    def login(self):
+        login_url = ppt['login_url']
+        headers = {'Accept':'*/*',
+                   'Accept-Encoding':'gzip, deflate',
+                   'Accept-Language':'zh-cn',
+                   'Connection':'keep-alive',
+                   'Content-Type':'application/x-www-form-urlencoded',
+                   'Cookie':'device_id=10272229-E368-4457-95B9-427D8EEDA461; sid=reu5uhbq-0GFW9FK_AF_GiG8OyTCvIOxBm2jiJiz',
+                   'Host':'xyq-ios2.cbg.163.com',
+                   'If-Modified-Since':'0',
+                   'Proxy-Connection':'keep-alive',
+                   'User-Agent':'xyqcbg2/2.3.2 CFNetwork/758.5.3 Darwin/15.6.0'}
+        datas = {'act':'chose_role',
+                 'app_version':'2.3.2',
+                 'roleid':'41922820',
+                 'device_name':'My iPhone',
+                 'obj_serverid':'769',
+                 'device_token':'<b685f8fb fba4c7fb 40e0c955 b1810053 244493f1 5bf149f5 f6ec0911 1d32a298>',
+                 'platform':'ios',
+                 'os_version':'9.3.3',
+                 'os_name':'iPhone OS',
+                 'device_id':'10272229-E368-4457-95B9-427D8EEDA461',
+                 'device_type':'2'}
+        r = requests.post(login_url,data=datas,headers=headers)
+        print(r.json())
     def json_query(self):
         ip_list = []
-        proxies = {'http':'http://39.134.161.12:8080','http':'http://211.159.247.232'}
+        proxies = {'http':'http://39.134.161.12:8080'}
         self.r = requests.get(self.url,self.cookies,verify=False,headers = self.headers)
-        if self.r.json()['status'] == 0:
+        if self.r.json()['status'] != 1:
+            print(self.r.json())
             raise Exception('请求失败')
         return self.r.json()
 
@@ -90,3 +115,5 @@ def matchcase(ordersn:str):
     return replace
 
 tianshiquery()
+# cbg = CBG(ppt['global_angel_zhu_url'])
+# cbg.login()
