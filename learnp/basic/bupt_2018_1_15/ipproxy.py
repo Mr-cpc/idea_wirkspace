@@ -28,13 +28,6 @@ def get_ip_list(url, headers):
     print(ip_dict)
     return ip_dict
 
-def get_random_ip(ip_list):
-    proxy_list = []
-    for ip in ip_list:
-        proxy_list.append('http://' + ip)
-    proxy_ip = random.choice(proxy_list)
-    proxies = {'http': proxy_ip}
-    return proxies
 
 url = 'http://www.kxdaili.com/'
 headers = {
