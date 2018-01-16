@@ -33,16 +33,16 @@ class CBG:
                    'Accept-Language':'zh-cn',
                    'Connection':'keep-alive',
                    'Content-Type':'application/x-www-form-urlencoded',
-                   'Cookie':'device_id=10272229-E368-4457-95B9-427D8EEDA461; sid=reu5uhbq-0GFW9FK_AF_GiG8OyTCvIOxBm2jiJiz',
+                   'Cookie':'device_id=10272229-E368-4457-95B9-427D8EEDA461; sid=rWdiC_1mS4L5dUxGCW0D1HF1UUduM-WociQ1B199',
                    'Host':'xyq-ios2.cbg.163.com',
                    'If-Modified-Since':'0',
                    'Proxy-Connection':'keep-alive',
                    'User-Agent':'xyqcbg2/2.3.2 CFNetwork/758.5.3 Darwin/15.6.0'}
         datas = {'act':'chose_role',
                  'app_version':'2.3.2',
-                 'roleid':'41922820',
+                 'roleid':'28634442',
                  'device_name':'My iPhone',
-                 'obj_serverid':'769',
+                 'obj_serverid':'39',
                  'device_token':'<b685f8fb fba4c7fb 40e0c955 b1810053 244493f1 5bf149f5 f6ec0911 1d32a298>',
                  'platform':'ios',
                  'os_version':'9.3.3',
@@ -67,7 +67,7 @@ class CBG:
 
 ppt = PptHelper()
 def tianshiquery():
-    query = CBG(ppt['global_angeljiuwei_url'])
+    query = CBG(ppt['global_angel_zhu_url'])
     i = 0
     all_roles = []
     qinghua = []
@@ -114,6 +114,6 @@ def matchcase(ordersn:str):
         return '{}{}'.format(m.group(1),ordersn)
     return replace
 
-tianshiquery()
+# tianshiquery()
 # cbg = CBG(ppt['global_angel_zhu_url'])
 # cbg.login()
