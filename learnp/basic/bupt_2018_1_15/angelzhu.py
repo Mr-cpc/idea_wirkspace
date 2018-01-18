@@ -66,7 +66,7 @@ class CBG:
 
 
 ppt = PptHelper()
-def tianshiquery():
+def tianshiquery(jinyi:str = ''):
     query = CBG(ppt['global_angel_zhu_url'])
     i = 0
     all_roles = []
@@ -83,12 +83,12 @@ def tianshiquery():
                 i += 1
             # print(i)
         for x in all_roles:
-            if has_jinyi(x,'青花',f):
+            if has_jinyi(x,jinyi,f):
                 qinghua.append(x)
             # print(x,file=f)
         qinghua.sort(key=lambda d:float(d['price_desc']))
         print('所有的：{}'.format(len(all_roles)))
-        print('青花：{}'.format(len(qinghua)))
+        print('{}：{}'.format(jinyi,len(qinghua)))
         for content in qinghua:
             print('----\nname:{}---\nprice:{}----\nqu:{}'.format(content['equip_name'],content['price_desc'],content['server_name']),file=f)
 def has_jinyi(role_overall_info:dict,target:str,f):
@@ -114,6 +114,6 @@ def matchcase(ordersn:str):
         return '{}{}'.format(m.group(1),ordersn)
     return replace
 
-# tianshiquery()
+tianshiquery('冰寒')
 # cbg = CBG(ppt['global_angel_zhu_url'])
 # cbg.login()
