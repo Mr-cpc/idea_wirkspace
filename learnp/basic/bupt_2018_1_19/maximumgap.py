@@ -20,7 +20,10 @@ def mxgap(nums:list):
     bucket = [0] * (max(nums) + 1)
     for val in nums:
         bucket[val] += 1
-    sorted_form = [val for val in bucket if val != 0]
+    sorted_form = []
+    for key,val in enumerate(bucket):
+        if val != 0:
+            sorted_form.extend([key]*val)
     ans = 0
     for i in range(len(nums)-1):
         ans = max(ans,sorted_form[i+1]-nums[i] if sorted_form[i+1] >= nums[i] else nums[i] - sorted_form[i+1])
