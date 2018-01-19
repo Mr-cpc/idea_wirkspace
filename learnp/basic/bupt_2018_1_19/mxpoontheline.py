@@ -38,6 +38,8 @@ def mxpotontheline(points:list):
 def cal_slope(p1,p2):
     return (p1.y -p2.y) / (p1.x - p2.x) if p1.x != p2.x else float('inf')
 def mxpotontheline2(points:list):
+    if len(points) < 2:
+        return 0
     ans = 1
     from collections import defaultdict
     for i in range(len(points)):
@@ -51,4 +53,4 @@ def mxpotontheline2(points:list):
 
 
 d = defaultdict(int)
-print(bool())
+print(mxpotontheline2([Point(1,2),Point(2,3)]))
