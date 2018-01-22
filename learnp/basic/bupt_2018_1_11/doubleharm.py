@@ -17,6 +17,7 @@ def query(url:str,path:str):
     with open(path,'w',encoding='utf-8') as f:
         i = 1
         j = 1
+        res = []
         while True:
             r = req.get(url,verify=False,cookies = cookies)
             contents = r.json()[ppt['eq_list']]
@@ -25,24 +26,29 @@ def query(url:str,path:str):
 
                 print('第{}页，{}个'.format(i,len(contents)))
                 # print(contents[0],file=f)
-                print('---------page{}'.format(i),file=f)
+                # print('---------page{}'.format(i),file=f)
                 for content in contents:
                     a = pattern.match(content[ppt['main_attr']])
                     b= Counter(content[ppt['down']][0].split(' '))[ppt['harm']] >= 2
                     if a and b:
-                        print('----\nname:{}---\nprice:{}----\nmain:{}-----\ndown:{}----\nqu:{}'.format(content['equip_name'],content['price_desc'],content[ppt['main_attr']],content[ppt['down']],content['server_name']),file=f)
-                        print(j,file=f)
-                        j+=1
+                        res.append(content)
+                        # print('----\nname:{}---\nprice:{}----\nmain:{}-----\ndown:{}----\nqu:{}'.format(content['equip_name'],content['price_desc'],content[ppt['main_attr']],content[ppt['down']],content['server_name']),file=f)
+                        # print(j,file=f)
+                        # j+=1
                 url = re.sub(r'(page=)(\d+)',matchcase(),url)
                 i += 1
             else:break
+        res.sort(key=lambda d:(float(d['price_desc']),d['server_name']))
+        for idx,content in enumerate(res):
+            print('----\nname:{}---\nprice:{}----\nmain:{}-----\ndown:{}----\nqu:{}'.format(content['equip_name'],content['price_desc'],content[ppt['main_attr']],content[ppt['down']],content['server_name']),file=f)
+            print(idx+1,file=f)
 def page_inc(url):
     return re.sub(r'(page=)(\d+)',matchcase(),url)
 def matchcase():
     def replace(m):
         return '{}{}'.format(m.group(1),int(m.group(2))+1)
     return replace
-# while True:
-#
-#     num = query(shijie_url)
-#     time.sleep(100)
+while True:
+
+    num = query(ppt['global_double_harm_7_url'],'jinglian7.txt')
+    time.sleep(100)
