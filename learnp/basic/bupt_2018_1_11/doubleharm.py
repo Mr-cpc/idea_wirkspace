@@ -48,7 +48,7 @@ def matchcase():
     def replace(m):
         return '{}{}'.format(m.group(1),int(m.group(2))+1)
     return replace
-while True:
-
-    num = query(ppt['global_double_harm_7_url'],'jinglian7.txt')
-    time.sleep(100)
+if __name__ == '__main__':
+    while True:
+        num = query(ppt['global_double_harm_7_url'],'jinglian7.txt')
+        time.sleep(100)
