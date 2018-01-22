@@ -38,19 +38,23 @@ def mxpotontheline(points:list):
 def cal_slope(p1,p2):
     return (p1.y -p2.y) / (p1.x - p2.x) if p1.x != p2.x else float('inf')
 def mxpotontheline2(points:list):
-    if len(points) < 2:
+    if len(points) < 1:
         return 0
     ans = 1
     from collections import defaultdict
     for i in range(len(points)):
         d = defaultdict(int)
+        same = 0
         for j in range(i+1,len(points)):
             if points[i].x == points[j].x and points[i].y == points[j].y:
-                continue
-            d[cal_slope(points[i],points[j])] += 1
+                same += 1
+            else:
+                d[cal_slope(points[i],points[j])] += 1
+        for key in d:
+            d[key] += same
         ans = max(ans,max(d.values())+1) if d else ans
     return ans
 
 
 d = defaultdict(int)
-print(mxpotontheline2([Point(1,2),Point(2,3)]))
+print(mxpotontheline2([Point(1,2),Point(2,3),Point(2,3),Point(1,2)]))
