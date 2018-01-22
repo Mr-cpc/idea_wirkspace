@@ -23,15 +23,16 @@ def maxproifsub(nums:list):
     for i in range(1,len(nums)):
         if nums[i] > 0 :
             cur_max = max(prev_max * nums[i],cur_max)
-            prev_max = cur_max
-            prev_min = prev_min * nums[i] if prev_min is not None else None
+            prev_max = cur_max #this main prev_max
+            prev_min = prev_min * nums[i] if prev_min is not None else None #this maintain prev_min
         elif nums[i] < 0:
             if prev_min is None:
-                prev_min = nums[i] * prev_max
-                prev_max = 1
+                prev_min = nums[i] * prev_max # this maintain prev_min
+                prev_max = 1 # this maintain prev_max
             else:
                 cur_max = max(prev_min * nums[i],cur_max)
-                prev_max = cur_max
+                prev_min = prev_max * nums[i] #this maintain prev_min
+                prev_max = cur_max #this maintain prev_max
         else:
             prev_max,prev_min = 1,None
         print('i:{},curmax:{},min:{},max:{}'.format(i,cur_max,prev_min,prev_max))
@@ -39,6 +40,6 @@ def maxproifsub(nums:list):
 if __name__ == '__main__':
     l1 = [2,3,-2,4,-2]
     l2 = []
-    a = maxproifsub([1,-2,3,-4,2])
+    a = maxproifsub([1,-2,3,-4,2,6,-5])
     print(a)
     pass
