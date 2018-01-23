@@ -13,6 +13,7 @@ import seaborn as sns
 from pip._vendor import requests
 import re
 from basic.bupt_2018_1_11.doubleharm import page_inc
+import chardet
 
 '''
 User:waiting
@@ -114,6 +115,8 @@ def matchcase(ordersn:str):
         return '{}{}'.format(m.group(1),ordersn)
     return replace
 
-tianshiquery('冰寒')
+
+if __name__ == '__main__':
+    tianshiquery('青花')
 # cbg = CBG(ppt['global_angel_zhu_url'])
 # cbg.login()
