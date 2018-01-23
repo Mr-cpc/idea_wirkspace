@@ -27,13 +27,9 @@ def dfs(board:list, pos:tuple,word:str,s:set):
         return False
     else:
         for i in (-1,1):
-            s_copy1 = s.copy()
-            s_copy1.add(pos)
-            if dfs(board,(pos[0],pos[1]+i),word[1:],s_copy1):
+            if dfs(board,(pos[0],pos[1]+i),word[1:],{*s,pos}):
                 return True
-            s_copy2 = s.copy()
-            s_copy2.add(pos)
-            if dfs(board,(pos[0]+i,pos[1]),word[1:],s_copy2):
+            if dfs(board,(pos[0]+i,pos[1]),word[1:],{*s,pos}):
                 return True
         return False
 def contain(board:list, word:str):
@@ -47,16 +43,17 @@ def contain(board:list, word:str):
 def wdsearch(board:list,words:list):
     return [word for word in words if contain(board,word)]
 if __name__ == '__main__':
-    # board = [
-    #     ['o','a','a','n'],
-    #     ['e','t','a','e'],
-    #     ['i','h','k','r'],
-    #     ['i','f','l','v']
-    # ]
-    board = [[]]
-    print(bool(board))
-    # words = ["oath","pea","eat","rain"]
-    words = []
+    board = [
+        ['o','a','a','n'],
+        ['e','t','a','e'],
+        ['i','h','k','r'],
+        ['i','f','l','v']
+    ]
+    # board = [[]]
+    # print(bool(board))
+
+    words = ["oath","pea","eat","rain"]
+    # words = []
     print(wdsearch(board,words))
 
     
