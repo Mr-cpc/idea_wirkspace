@@ -21,7 +21,7 @@ def dfs(board:list, pos:tuple,word:str,s:set):
         return True
     elif pos in s:
         return False
-    elif not (0 < pos[1] < len(board[0])) and (0 < pos[0] < len(board)):
+    elif not ((0 <= pos[1] < len(board[0])) and (0 <= pos[0] < len(board))):
         return False
     elif word[0] != board[pos[0]][pos[1]]:
         return False
@@ -41,7 +41,7 @@ def contain(board:list, word:str):
 
 
 def wdsearch(board:list,words:list):
-    return [word for word in words if contain(board,word)]
+    return [word for word in set(words) if contain(board,word)]
 if __name__ == '__main__':
     board = [
         ['o','a','a','n'],
@@ -49,10 +49,10 @@ if __name__ == '__main__':
         ['i','h','k','r'],
         ['i','f','l','v']
     ]
-    # board = [[]]
+    board = [['a']]
     # print(bool(board))
 
-    words = ["oath","pea","eat","rain"]
+    words = ["a",'a']
     # words = []
     print(wdsearch(board,words))
 
