@@ -38,5 +38,6 @@ def query(serv_name:str):
     import basic.bupt_2018_1_11.doubleharm
     basic.bupt_2018_1_11.doubleharm.query(url,'{}.txt'.format(serv_name))
 
-query('a')
+if __name__ == "__main__":
+    query('雨花台')
 
