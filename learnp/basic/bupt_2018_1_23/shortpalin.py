@@ -47,9 +47,25 @@ def shortpalin(s:str):
     print(i)
     return s[i:][::-1] + s
 def shortpalin2(s:str):
-    pass
+    t = '{}#{}*'.format(s,s[::-1])
+    _next_ = next(t)
+    print(_next_[-1])
+    print(_next_)
+    return '{}{}'.format(s[_next_[-1]:][::-1],s)
+
+def next(s:str):
+    _next_ = [0] * len(s)
+    _next_[0] = -1
+    for i in range(2,len(s)):
+        k = _next_[i-1]
+        while k != -1 and s[k] != s[i-1]:
+            k = _next_[k]
+        _next_[i] = k + 1
+    return _next_
 if __name__ == '__main__':
-    a = shortpalin('ass')
+    # a = shortpalin('ass')
+    # print(next('abaa'))
+    a = shortpalin2('')
     print(a)
     pass
 
