@@ -46,15 +46,18 @@ class TrieNo:
             root = chd
         return hasattr(root,"isEnd") and root.isEnd
 
-trie = TrieNo(" ")
-cal = lambda s:sum([(ord(s[i])-97) * (26 **(len(s)-i-1)) for i in range(len(s))])
-print(cal("otif"))
-print(cal("racy"))
-# words = ["a","apply","app","ap","appl","apple","appla"]
-words = ["rac","rs","ra","on","r","otif","o","onpdu","rsf","rs","ot","oti","racy","onpd"]
-words.sort(key=lambda x:(len(x),-cal(x)))
-print(words)
-res,w = 0,""
-for id,word in enumerate(words):
-    res,w = (id,word) if trie.insert(word) else (res,w)
-print(w)
+    def is_end(self):
+        return hasattr(self,'isEnd') and self.isEnd
+if __name__ == '__main__':
+    trie = TrieNo(" ")
+    cal = lambda s:sum([(ord(s[i])-97) * (26 **(len(s)-i-1)) for i in range(len(s))])
+    print(cal("otif"))
+    print(cal("racy"))
+    # words = ["a","apply","app","ap","appl","apple","appla"]
+    words = ["rac","rs","ra","on","r","otif","o","onpdu","rsf","rs","ot","oti","racy","onpd"]
+    words.sort(key=lambda x:(len(x),-cal(x)))
+    print(words)
+    res,w = 0,""
+    for id,word in enumerate(words):
+        res,w = (id,word) if trie.insert(word) else (res,w)
+    print(w)
