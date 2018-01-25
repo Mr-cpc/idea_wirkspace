@@ -26,3 +26,6 @@ class PptHelper:
 
     def __iter__(self):
         return iter(self.ppt.d)
+
+    def items(self):
+        return self.ppt.items()
