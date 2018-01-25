@@ -23,3 +23,6 @@ class PptHelper:
 
     def __getitem__(self, item):
         return self.ppt[item]
+
+    def __iter__(self):
+        return iter(self.ppt.d)
