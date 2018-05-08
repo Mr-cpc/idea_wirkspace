@@ -40,9 +40,9 @@ def quchong(s:str) -> str:
                 break
         if not flag:
             i += 1
-    for key in d:
+    for key in sorted(d.keys(),key=lambda key:-key[1]):
         s = s[:key[1]+len(key[0])] + s[key[1]+(d[key]+1)*len(key[0]):]
     return s
 if __name__ == '__main__':
-    x = "阿里巴巴"
+    x = "刚才我说了我要退款我要退款我要退款，我都说了我要退款我要退款我要退款"
     print(quchong(x))
