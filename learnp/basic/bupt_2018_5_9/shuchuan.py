@@ -15,11 +15,12 @@ Date:2018-05-09
 Time:17:26
 '''
 from sys import stdin
+from functools import cmp_to_key
 while True:
     try:
         n = int(stdin.readline().strip())
         nums = [ele for ele in stdin.readline().strip().split(" ")]
-        nums.sort(reverse = True)
+        nums.sort(key=cmp_to_key(lambda x,y:int(y+x)-int(x+y)))
         print("".join(nums))
     except:
         break
