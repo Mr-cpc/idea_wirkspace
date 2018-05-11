@@ -26,5 +26,15 @@
     <orderEntry type="library" name="org.thymeleaf:thymeleaf-spring4:Release" level="project" />
     <orderEntry type="library" name="Spring-4.3.10.RELEASE" level="project" />
     <orderEntry type="library" name="Spring MVC-4.3.10.RELEASE" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>
