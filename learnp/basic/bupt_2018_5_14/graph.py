@@ -15,6 +15,7 @@ Date:2018-05-14
 Time:14:39
 '''
 from sys import stdin
+import copy
 class DirectedGraph:
     def __init__(self):
         self.v_n = int(stdin.readline().strip())
@@ -48,6 +49,13 @@ class DirectedGraph:
         print(dist)
         return dist
 
+    def shortest_step(self,i,j):
+        g = copy.deepcopy(self)
+        for i in range(g.v_n):
+            for j in range(g.v_n):
+                g.g[i][j] = 1 if i != j and g.g[i][j] != float('inf') else g.g[i][j]
+        return g.shortest_path(i,j)
+
     def topological_sort(self):
         self.topo_serial = []
         self.dfs(0)
@@ -71,6 +79,11 @@ class DirectedGraph:
         self.topo_serial.append(start)
         print('visit {}'.format(start))
 
+    def __str__(self):
+        v_n = 'vertex:{}\n'.format(self.v_n)
+        e_n = 'edge:{}\n'.format(self.e_n)
+
+        return
 
 if __name__ == '__main__':
     graph = DirectedGraph()
