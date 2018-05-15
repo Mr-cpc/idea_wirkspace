@@ -31,6 +31,30 @@ class DirectedGraph:
     def dfs(self,start:int):
         visited = [False] * self.v_n
         self._dfs(start,visited)
+        while True:
+            start = self._not_finished(visited)
+            if start is not None:
+                self._dfs(start,visited)
+            else:
+                break
+    def dfs_nonrev(self,start):
+        visited = [False] * self.v_n
+        while True:
+            self._dfs(start,visited)
+            start = self._not_finished(visited)
+            if start is None:
+                break
+    def _dfs_nonrev(self,start:int,visited:list):
+        stk = [start]
+        while stk:
+            cur = stk.pop()
+            if visited[cur]:
+                continue
+            self.visit(cur)
+            visited[cur] = True
+            for i in range(len(self.g[cur])):
+                if i != cur and self.g[cur][i] != float('inf'):
+                    stk.append(i)
     def shortest_path(self,i:int,j:int):
         return self.dijkstra(i)[j]
 
@@ -46,15 +70,15 @@ class DirectedGraph:
             s.append(tmpv)
             u.remove(tmpv)
             self.modify_dist(dist,tmpv,start)
-        print(dist)
+        print('dist:{}'.format(dist))
         return dist
 
-    def shortest_step(self,i,j):
+    def shortest_step(self,fr,to):
         g = copy.deepcopy(self)
         for i in range(g.v_n):
             for j in range(g.v_n):
                 g.g[i][j] = 1 if i != j and g.g[i][j] != float('inf') else g.g[i][j]
-        return g.shortest_path(i,j)
+        return g.shortest_path(fr,to)
 
     def topological_sort(self):
         self.topo_serial = []
@@ -76,17 +100,27 @@ class DirectedGraph:
                 self._dfs(i,visied)
 
     def visit(self, start):
-        self.topo_serial.append(start)
+        # self.topo_serial.append(start)
         print('visit {}'.format(start))
 
     def __str__(self):
         v_n = 'vertex:{}\n'.format(self.v_n)
         e_n = 'edge:{}\n'.format(self.e_n)
+        g = []
+        for i in range(self.v_n):
+            g.append("".join(str(self.g[i])))
+        g = '\n'.join(g)
+        return '{}{}{}'.format(v_n,e_n,g)
 
-        return
+    def _not_finished(self, visited):
+        for i in range(len(visited)):
+            if not visited[i]:
+                return i
+        else:
+            return None
+
+
 
 if __name__ == '__main__':
     graph = DirectedGraph()
-    graph.topological_sort()
-    print(graph.topo_serial[::-1])
-    
+    print(graph.dfs_nonrev(0))
