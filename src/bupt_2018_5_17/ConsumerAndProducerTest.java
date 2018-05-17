@@ -7,12 +7,12 @@ import bupt_2018_5_16.SpinLock;
  * Created by waiting on 2018/5/17.
  */
 public class ConsumerAndProducerTest {
-    static int n = 2;
+    static int n = 3;
     static Consumer[] consumers = new Consumer[n];
     static Producer[] producers = new Producer[n];
     static MyLock lock = new SpinLock();
     static Food food = new Food(5);
-    private static int produce_limit = 10;
+    private static int produce_limit = 10000000;
 
     static {
         for (int i = 0; i < consumers.length;i++) {
@@ -34,7 +34,7 @@ public class ConsumerAndProducerTest {
                     if (food.produceTime >= produce_limit)
                         exit = true;
                     else if (food.num < food.limit) {
-                        System.out.println(Thread.activeCount());
+//                        System.out.println(Thread.activeCount());
                         producers[index].produce(food);
                         food.produceTime++;
                         System.out.printf("共生产了%s次\n",food.produceTime);
@@ -59,7 +59,7 @@ public class ConsumerAndProducerTest {
                     lock.unlock();
                     if (exit)
                          break;
-                    System.out.println(Thread.activeCount());
+//                    System.out.println(Thread.activeCount());
                 }
             };
             producers_t[index] = new Thread(producers_run[index]);
