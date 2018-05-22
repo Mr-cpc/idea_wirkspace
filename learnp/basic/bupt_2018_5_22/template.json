@@ -1,0 +1,127 @@
+{
+  'status': 1,
+  'advance_search_type': 'overall_equip_search',
+  'order_field': '',
+  'order_headers': [
+    {
+      'field': 'selling_time',
+      'direction': [
+        'DESC'
+      ],
+      'name': '最新'
+    },
+    {
+      'field': 'collect_num',
+      'direction': [
+        'DESC'
+      ],
+      'name': '收藏'
+    },
+    {
+      'field': 'price',
+      'direction': [
+        'DESC',
+        'ASC'
+      ],
+      'name': '价格'
+    }
+  ],
+  'order_direction': '',
+  'num_per_page': 15,
+  'equip_list': [
+    {
+      'has_collect': False,
+      'subtitle': '110级',
+      'equip_status_desc': '上架中',
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 2788235,
+      'collect_num': 17,
+      'pass_fair_show': 1,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '3天9小时13分钟',
+      'server_name': '千里之外',
+      'onsale_expire_time_desc': '3天9小时13分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '无与伦比',
+      'desc_sumup_short': '命中 +634 伤害 +409 锻炼10级 开4孔',
+      'accept_bargain': False,
+      'price': 260000,
+      'status_desc': '上架中',
+      'price_desc': '2600.00',
+      'serverid': 579,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1550.gif',
+      'selling_time_ago_desc': '10天前',
+      'desc_sumup': '命中 +634 伤害 +409 锻炼10级 开4孔',
+      'game_ordersn': '1109_1523112857_1111789363',
+      'equip_name': '太极',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '简易',
+          70
+        ],
+        [
+          '10锻',
+          50
+        ]
+      ],
+      'selling_time': '2018-05-11 18:42:48'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '110级',
+      'equip_status_desc': '上架中',
+      'agg_added_attrs': [
+        '体质 +21 魔力 +21'
+      ],
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 3737289,
+      'collect_num': 374,
+      'pass_fair_show': 1,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '2天5小时38分钟',
+      'server_name': '青岛栈桥',
+      'onsale_expire_time_desc': '2天5小时38分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '山东1区',
+      'desc_sumup_short': '伤害 +424 命中 +792 锻炼11级 双4孔',
+      'accept_bargain': False,
+      'price': 3992200,
+      'status_desc': '上架中',
+      'price_desc': '39922.00',
+      'serverid': 669,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1552.gif',
+      'selling_time_ago_desc': '11天前',
+      'desc_sumup': '伤害 +424 命中 +792 锻炼11级 双4孔',
+      'game_ordersn': '1203_1519002529_1204967514',
+      'equip_name': '秋风',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '简易',
+          70
+        ],
+        [
+          '破甲术',
+          60
+        ]
+      ],
+      'selling_time': '2018-05-10 15:07:30'
+    }
+  ],
+  'can_cross_buy': True,
+  'page': 1,
+  'is_last_page': True
+}
