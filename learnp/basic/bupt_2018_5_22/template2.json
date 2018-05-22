@@ -1,0 +1,711 @@
+{
+  'status': 1,
+  'advance_search_type': 'overall_equip_search',
+  'order_field': '',
+  'order_headers': [
+    {
+      'field': 'selling_time',
+      'direction': [
+        'DESC'
+      ],
+      'name': '最新'
+    },
+    {
+      'field': 'collect_num',
+      'direction': [
+        'DESC'
+      ],
+      'name': '收藏'
+    },
+    {
+      'field': 'price',
+      'direction': [
+        'DESC',
+        'ASC'
+      ],
+      'name': '价格'
+    }
+  ],
+  'order_direction': '',
+  'num_per_page': 15,
+  'equip_list': [
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'agg_added_attrs': [
+        '魔力 +16 敏捷 +16'
+      ],
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 3814466,
+      'collect_num': 2,
+      'pass_fair_show': 1,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '13天23小时26分钟',
+      'server_name': '青岛栈桥',
+      'onsale_expire_time_desc': '13天23小时26分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '山东1区',
+      'desc_sumup_short': '伤害 +425 命中 +378 锻炼4级',
+      'accept_bargain': False,
+      'price': 242000,
+      'status_desc': '上架中',
+      'price_desc': '2420.00',
+      'serverid': 669,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1552.gif',
+      'selling_time_ago_desc': '33分钟前',
+      'desc_sumup': '伤害 +425 命中 +378 锻炼4级',
+      'game_ordersn': '1203_1522548023_1205044753',
+      'equip_name': '秋风',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '初伤393',
+          50
+        ]
+      ],
+      'selling_time': '2018-05-22 13:36:53'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 3659397,
+      'collect_num': 16,
+      'pass_fair_show': 0,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '3天3小时36分钟',
+      'server_name': '钱塘江',
+      'onsale_expire_time_desc': '17天3小时36分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '浙江3区',
+      'desc_sumup_short': '伤害 +409 命中 +615 锻炼10级 开4孔',
+      'accept_bargain': False,
+      'price': 280000,
+      'status_desc': '公示期',
+      'price_desc': '2800.00',
+      'serverid': 138,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1552.gif',
+      'selling_time_ago_desc': '3小时前',
+      'desc_sumup': '伤害 +409 命中 +615 锻炼10级 开4孔',
+      'game_ordersn': '99_1526895110_100573711',
+      'equip_name': '秋风',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '10锻',
+          50
+        ],
+        [
+          '初总伤530',
+          40
+        ]
+      ],
+      'selling_time': '2018-05-22 10:35:06'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'agg_added_attrs': [
+        '力量 +26'
+      ],
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 2271611,
+      'collect_num': 19,
+      'pass_fair_show': 1,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '13天19小时39分钟',
+      'server_name': '雨花台',
+      'onsale_expire_time_desc': '13天19小时39分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '江苏1区',
+      'desc_sumup_short': '命中 +700 伤害 +378 锻炼10级 开3孔',
+      'accept_bargain': False,
+      'price': 320000,
+      'status_desc': '上架中',
+      'price_desc': '3200.00',
+      'serverid': 104,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1552.gif',
+      'selling_time_ago_desc': '4小时前',
+      'desc_sumup': '命中 +700 伤害 +378 锻炼10级 开3孔',
+      'game_ordersn': '86_1523964319_87350901',
+      'equip_name': '秋风',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '10锻',
+          50
+        ],
+        [
+          '初总伤528',
+          40
+        ]
+      ],
+      'selling_time': '2018-05-22 09:50:46'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 1989683,
+      'collect_num': 9,
+      'pass_fair_show': 1,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '13天18小时51分钟',
+      'server_name': '群星璀璨',
+      'onsale_expire_time_desc': '13天18小时51分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '天下无双',
+      'desc_sumup_short': '命中 +578 伤害 +423 锻炼8级 开4孔',
+      'accept_bargain': True,
+      'price': 438888,
+      'status_desc': '上架中',
+      'price_desc': '4388.88',
+      'serverid': 723,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1550.gif',
+      'selling_time_ago_desc': '5小时前',
+      'desc_sumup': '命中 +578 伤害 +423 锻炼8级 开4孔',
+      'game_ordersn': '1259_1522775055_1260990601',
+      'equip_name': '太极',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '初伤423',
+          70
+        ],
+        [
+          '初总伤549',
+          50
+        ]
+      ],
+      'selling_time': '2018-05-22 09:02:32'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'agg_added_attrs': [
+        '力量 +23 敏捷 +20'
+      ],
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 2941564,
+      'collect_num': 40,
+      'pass_fair_show': 1,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '13天2小时22分钟',
+      'server_name': '阳光城',
+      'onsale_expire_time_desc': '13天2小时22分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '北京2区',
+      'desc_sumup_short': '伤害 +412 命中 +654 锻炼10级 双4孔',
+      'accept_bargain': False,
+      'price': 758000,
+      'status_desc': '上架中',
+      'price_desc': '7580.00',
+      'serverid': 299,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1550.gif',
+      'selling_time_ago_desc': '21小时前',
+      'desc_sumup': '伤害 +412 命中 +654 锻炼10级 双4孔',
+      'game_ordersn': '330_1516505799_331936497',
+      'equip_name': '太极',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '力敏双加43',
+          60
+        ],
+        [
+          '初伤412',
+          60
+        ]
+      ],
+      'selling_time': '2018-05-21 16:33:27'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'agg_added_attrs': [
+        '敏捷 +18 力量 +17'
+      ],
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 2564208,
+      'collect_num': 26,
+      'pass_fair_show': 1,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '13天1小时51分钟',
+      'server_name': '彩云之南',
+      'onsale_expire_time_desc': '13天1小时51分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '云南区',
+      'desc_sumup_short': '命中 +668 伤害 +386 锻炼10级 开4孔',
+      'accept_bargain': False,
+      'price': 285000,
+      'status_desc': '上架中',
+      'price_desc': '2850.00',
+      'serverid': 127,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1551.gif',
+      'selling_time_ago_desc': '22小时前',
+      'desc_sumup': '命中 +668 伤害 +386 锻炼10级 开4孔',
+      'game_ordersn': '280_1524843670_282563779',
+      'equip_name': '玉龙',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '10锻',
+          50
+        ],
+        [
+          '初伤386',
+          40
+        ]
+      ],
+      'selling_time': '2018-05-21 16:02:43'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'agg_added_attrs': [
+        '体质 +24'
+      ],
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 2684000,
+      'collect_num': 6,
+      'pass_fair_show': 1,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '12天23小时6分钟',
+      'server_name': '齐云楼',
+      'onsale_expire_time_desc': '12天23小时6分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '福建2区',
+      'desc_sumup_short': '命中 +615 伤害 +419 锻炼10级 开4孔',
+      'accept_bargain': False,
+      'price': 319900,
+      'status_desc': '上架中',
+      'price_desc': '3199.00',
+      'serverid': 326,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1550.gif',
+      'selling_time_ago_desc': '1天前',
+      'desc_sumup': '命中 +615 伤害 +419 锻炼10级 开4孔',
+      'game_ordersn': '397_1524211574_399582973',
+      'equip_name': '太极',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '10锻',
+          50
+        ],
+        [
+          '初总伤540',
+          40
+        ]
+      ],
+      'selling_time': '2018-05-21 13:17:10'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 4899731,
+      'collect_num': 3,
+      'pass_fair_show': 0,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '2天21小时13分钟',
+      'server_name': '兰亭序',
+      'onsale_expire_time_desc': '16天21小时13分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '无与伦比',
+      'desc_sumup_short': '命中 +617 伤害 +431 锻炼10级 开4孔',
+      'accept_bargain': True,
+      'price': 355500,
+      'status_desc': '公示期',
+      'price_desc': '3555.00',
+      'serverid': 554,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1551.gif',
+      'selling_time_ago_desc': '1天前',
+      'desc_sumup': '命中 +617 伤害 +431 锻炼10级 开4孔',
+      'game_ordersn': '1082_1526872128_1086901959',
+      'equip_name': '玉龙',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '10锻',
+          50
+        ],
+        [
+          '初总伤553',
+          50
+        ]
+      ],
+      'selling_time': '2018-05-21 11:08:48'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'agg_added_attrs': [
+        '魔力 +15 体质 +22'
+      ],
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 3672321,
+      'collect_num': 0,
+      'pass_fair_show': 0,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '2天20小时18分钟',
+      'server_name': '西栅老街',
+      'onsale_expire_time_desc': '16天20小时18分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '浙江1区',
+      'desc_sumup_short': '命中 +553 伤害 +427 锻炼10级 开4孔',
+      'accept_bargain': True,
+      'price': 255500,
+      'status_desc': '公示期',
+      'price_desc': '2555.00',
+      'serverid': 132,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1550.gif',
+      'selling_time_ago_desc': '1天前',
+      'desc_sumup': '命中 +553 伤害 +427 锻炼10级 开4孔',
+      'game_ordersn': '544_1526868885_547514710',
+      'equip_name': '太极',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '10锻',
+          50
+        ],
+        [
+          '初总伤528',
+          40
+        ]
+      ],
+      'selling_time': '2018-05-21 10:14:45'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'agg_added_attrs': [
+        '敏捷 -6 力量 +16'
+      ],
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 1996340,
+      'collect_num': 3,
+      'pass_fair_show': 0,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '2天19小时30分钟',
+      'server_name': '东海崂山',
+      'onsale_expire_time_desc': '16天19小时30分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '山东1区',
+      'desc_sumup_short': '伤害 +439 命中 +513 锻炼10级 开4孔',
+      'accept_bargain': True,
+      'price': 288800,
+      'status_desc': '公示期',
+      'price_desc': '2888.00',
+      'serverid': 681,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1552.gif',
+      'selling_time_ago_desc': '1天前',
+      'desc_sumup': '伤害 +439 命中 +513 锻炼10级 开4孔',
+      'game_ordersn': '1217_1526865959_1218997298',
+      'equip_name': '秋风',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '10锻',
+          50
+        ]
+      ],
+      'selling_time': '2018-05-21 09:26:51'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'agg_added_attrs': [
+        '敏捷 +19 耐力 +19'
+      ],
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 792048,
+      'collect_num': 19,
+      'pass_fair_show': 1,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '12天18小时50分钟',
+      'server_name': '群雄逐鹿',
+      'onsale_expire_time_desc': '12天18小时50分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '天下无双',
+      'desc_sumup_short': '伤害 +417 命中 +553 锻炼8级 开4孔',
+      'accept_bargain': False,
+      'price': 395000,
+      'status_desc': '上架中',
+      'price_desc': '3950.00',
+      'serverid': 762,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1551.gif',
+      'selling_time_ago_desc': '1天前',
+      'desc_sumup': '伤害 +417 命中 +553 锻炼8级 开4孔',
+      'game_ordersn': '1298_1508918493_1298604716',
+      'equip_name': '玉龙',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '初总伤534',
+          40
+        ]
+      ],
+      'selling_time': '2018-05-21 09:00:51'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'agg_added_attrs': [
+        '体质 +23 敏捷 +18'
+      ],
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 2803846,
+      'collect_num': 32,
+      'pass_fair_show': 1,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '12天17小时2分钟',
+      'server_name': '龙马精神',
+      'onsale_expire_time_desc': '12天17小时2分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '无与伦比',
+      'desc_sumup_short': '伤害 +498 命中 +392 锻炼10级 开4孔',
+      'accept_bargain': True,
+      'price': 799900,
+      'status_desc': '上架中',
+      'price_desc': '7999.00',
+      'serverid': 705,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1551.gif',
+      'selling_time_ago_desc': '1天前',
+      'desc_sumup': '伤害 +498 命中 +392 锻炼10级 开4孔',
+      'game_ordersn': '1241_1522665341_1243805185',
+      'equip_name': '玉龙',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '慈航普度',
+          70
+        ],
+        [
+          '初伤418',
+          70
+        ]
+      ],
+      'selling_time': '2018-05-21 07:13:01'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 2247636,
+      'collect_num': 7,
+      'pass_fair_show': 0,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '2天5小时35分钟',
+      'server_name': '晚芳亭',
+      'onsale_expire_time_desc': '16天5小时35分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '上海1区',
+      'desc_sumup_short': '伤害 +412 命中 +378 开4孔',
+      'accept_bargain': False,
+      'price': 299900,
+      'status_desc': '公示期',
+      'price_desc': '2999.00',
+      'serverid': 163,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1551.gif',
+      'selling_time_ago_desc': '1天前',
+      'desc_sumup': '伤害 +412 命中 +378 开4孔',
+      'game_ordersn': '37_1526815903_37810682',
+      'equip_name': '玉龙',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '初伤412',
+          60
+        ],
+        [
+          '初总伤538',
+          40
+        ]
+      ],
+      'selling_time': '2018-05-20 19:31:43'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 2875619,
+      'collect_num': 7,
+      'pass_fair_show': 1,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '11天7小时51分钟',
+      'server_name': '龙马精神',
+      'onsale_expire_time_desc': '11天7小时51分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '无与伦比',
+      'desc_sumup_short': '伤害 +423 命中 +657 锻炼10级 开4孔',
+      'accept_bargain': False,
+      'price': 465500,
+      'status_desc': '上架中',
+      'price_desc': '4655.00',
+      'serverid': 705,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1550.gif',
+      'selling_time_ago_desc': '2天前',
+      'desc_sumup': '伤害 +423 命中 +657 锻炼10级 开4孔',
+      'game_ordersn': '1241_1526026400_1243877007',
+      'equip_name': '太极',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '初伤423',
+          70
+        ],
+        [
+          '10锻',
+          50
+        ]
+      ],
+      'selling_time': '2018-05-19 22:02:03'
+    },
+    {
+      'has_collect': False,
+      'subtitle': '100级',
+      'equip_status_desc': '上架中',
+      'storage_type': 1,
+      'tag': 'softmax_fm',
+      'equipid': 2529976,
+      'collect_num': 8,
+      'pass_fair_show': 1,
+      'appointed_roleid': '',
+      'sell_expire_time_desc': '11天3小时42分钟',
+      'server_name': '牡丹亭',
+      'onsale_expire_time_desc': '11天3小时42分钟',
+      'equip_status': 2,
+      'kindid': 10,
+      'area_name': '河南2区',
+      'desc_sumup_short': '命中 +628 伤害 +418 锻炼10级 开4孔',
+      'accept_bargain': False,
+      'price': 359900,
+      'status_desc': '上架中',
+      'price_desc': '3599.00',
+      'serverid': 192,
+      'icon': 'https://cbg-xyq.res.netease.com/images/big/1550.gif',
+      'selling_time_ago_desc': '2天前',
+      'desc_sumup': '命中 +628 伤害 +418 锻炼10级 开4孔',
+      'game_ordersn': '100_1522070426_102149652',
+      'equip_name': '太极',
+      'eid': None,
+      'highlight': [
+        [
+          '永不磨损',
+          80
+        ],
+        [
+          '初伤418',
+          70
+        ],
+        [
+          '10锻',
+          50
+        ]
+      ],
+      'selling_time': '2018-05-19 17:53:13'
+    }
+  ],
+  'can_cross_buy': True,
+  'page': 1,
+  'is_last_page': False
+}

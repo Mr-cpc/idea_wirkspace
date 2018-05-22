@@ -21,8 +21,8 @@ Time:9:17
 '''
 def get_bumo_info():
     ppt = Property(r'..\bupt_2017_11_24\global.properties')
-    # url = ppt['jianyi_110_bumo_shanzi']
-    url = ppt['bumo_100_shanzi']
+    url = ppt['jianyi_110_bumo_shanzi']
+    # url = ppt['bumo_100_shanzi']
     with open('100bumo.txt','w',encoding='utf-8') as f:
         cbg = CBG(url)
         objs = []
@@ -39,7 +39,7 @@ def get_bumo_info():
                 objs.append(equip)
                 # print(equip,file=f)
             cbg.url = page_inc(cbg.url)
-        objs.sort(key=lambda obj:obj.price)
+        objs.sort(key=lambda obj:obj.zongshang)
         for obj in objs:
             print(obj,file=f)
 if __name__ == '__main__':
