@@ -21,7 +21,7 @@ Time:9:17
 '''
 def get_bumo_info():
     ppt = Property(r'..\bupt_2017_11_24\global.properties')
-    url = ppt['jianyi_110_bumo_shanzi']
+    url = ppt['bumo_100_shanzi']
     # url = ppt['bumo_100_shanzi']
     with open('100bumo.txt','w',encoding='utf-8') as f:
         cbg = CBG(url)

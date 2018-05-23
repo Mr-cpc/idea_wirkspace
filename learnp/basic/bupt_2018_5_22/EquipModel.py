@@ -49,6 +49,8 @@ class EquipModel:
     价格
     总伤
     附加属性
+    收藏人数
+    上架时间
     '''
     def __init__(self,obj):
         self.shanghai = grasp_shanghai(obj['desc_sumup_short'])
@@ -57,6 +59,8 @@ class EquipModel:
         self.zongshang = int(self.shanghai) + int(self.mingzhong) / 3
         self.price = obj['price_desc']
         self.duanshu = grasp_duanshu(obj['desc_sumup'])
+        self.shouchangshu = obj['collect_num']
+        self.shangjiashijian = obj['selling_time']
         fujia = obj.get('agg_added_attrs','')
         self.fujia = fujiashuxing(fujia[0]) if fujia else ""
     def __str__(self):
@@ -66,6 +70,8 @@ class EquipModel:
                '总伤:{}\n' \
                '区:{}\n' \
                '价格:{}\n' \
-               '双加:{}\n'.format(self.shanghai,self.mingzhong,self.duanshu,self.zongshang,self.qu,self.price,self.fujia)
+               '双加:{}\n' \
+               '收藏数:{}\n' \
+               '何时上架:{}\n'.format(self.shanghai,self.mingzhong,self.duanshu,self.zongshang,self.qu,self.price,self.fujia,self.shouchangshu,self.shangjiashijian)
 if __name__ == '__main__':
     pass
