@@ -29,28 +29,30 @@ class CBG:
         self.headers = headers
     def login(self):
         login_url = ppt['login_url']
-        headers = {"Accept":"*/*",
-                   "Accept-Encoding":"gzip, deflate",
-                   "Accept-Language":"zh-cn",
-                   "Connection":"keep-alive",
-                   "Content-Length":"300",
-                   "Content-Type":"application/x-www-form-urlencoded",
-                   "Cookie":"device_id=xyq.10272229-E368-4457-95B9-427D8EEDA461; sid=MqTNrq-IoxPV3P9_0No4eZfEVHiGM7CzGUzOsjCZ; device_id=xyq.10272229-E368-4457-95B9-427D8EEDA461; sid=MqTNrq-IoxPV3P9_0No4eZfEVHiGM7CzGUzOsjCZ; NTES_SESS=Y5zvW_qdcTfTm7SR3VEegt0vn93UOoXPyFViPj34lX2C2QtKKC1gpBL_IINEN2Ce3UiFoOUy.TdGYfO5mG5npHb8Ci_yaw70gEQE70RnNvy.VDRtyK.NTp9NQESJlPbil0OSBIjK0GYSZQeKqqiHdOzg5fpaOHjODdBKWhY9.fXWc9tt17lcZMbaPfUwS645ZDgGtAhVqDg0y; _ga=GA1.2.89847710.1525606104",
-                   "Host":"xyq-ios2.cbg.163.com",
-                   "If-Modified-Since":"0",
-                   "Proxy-Connection":"keep-alive",
-                   "User-Agent":"xyqcbg2/3.0.8 CFNetwork/758.5.3 Darwin/15.6.0"}
-        datas = {'act':'chose_role',
+        headers = {'Accept':'*/*',
+                   'Accept-Encoding':'gzip, deflate',
+                   'Accept-Language':'zh-cn',
+                   'Connection':'keep-alive',
+                   'Content-Length':'300',
+                   'Content-Type':'application/x-www-form-urlencoded',
+                   'Cookie':'device_id=xyq.10272229-E368-4457-95B9-427D8EEDA461; sid=L8p3HhXKrUWwa5rUMDdeR6D9lBr4h7O0LmPl5eXh; device_id=xyq.10272229-E368-4457-95B9-427D8EEDA461; sid=L8p3HhXKrUWwa5rUMDdeR6D9lBr4h7O0LmPl5eXh; NTES_SESS=IcuSpkgsDE92NgNCdQxYSp8HfrEit46v7H6b4gyRZYW3W8Baa3Un7A59iixTxW3fyKbHP0KD2vepI_0G.pGk7SJs3b9DOh1NnT8T1NEkxLD2JJ7hKtlovJcx8TQCZ4JbZN0QAigaNpIQu8faddbSe0VnG_7O0Sg0qeAaMmIc2_YMocBBU1ZoulJO4_KhQwRGuqnpBXm6dqnND; _ga=GA1.2.89847710.1525606104; mp_MA-B9D6-269DF3E58055_hubble={"deviceUdid": "d3e23c2f-1e70-4241-9aaf-1dae3991828a","updatedTime": 1526961408493,"sessionStartTime": 1526961408505,"sessionReferrer": "","sessionUuid": "d8318f41-31af-40f9-b08b-ce5d282a567c","initial_referrer": "$direct","initial_referring_domain": "$direct","persistedTime": 1526918187819,"LASTEVENT": {"eventId": "da_screen","time": 1526961408526}}',
+                   'Host':'xyq-ios2.cbg.163.com',
+                   'If-Modified-Since':'0',
+                   'Proxy-Connection':'keep-alive',
+                   'User-Agent':'xyqcbg2/3.0.8 CFNetwork/758.5.3 Darwin/15.6.'}
+        datas = {'os_name':'iPhone OS',
                  'app_version':'3.0.8',
-                 'roleid':'20968054',
-                 'device_name':'My iPhone',
                  'obj_serverid':'579',
+                 'device_type':'2',
                  'device_token':'<b685f8fb fba4c7fb 40e0c955 b1810053 244493f1 5bf149f5 f6ec0911 1d32a298>',
                  'platform':'ios',
+                 'device_name':'My iPhone',
+                 'act':'chose_role',
                  'os_version':'9.3.3',
-                 'os_name':'iPhone OS',
-                 'device_id':'10272229-E368-4457-95B9-427D8EEDA461',
-                 'device_type':'2'}
+                 'roleid':'20968054',
+                 'device_id':'xyq.10272229-E368-4457-95B9-427D8EEDA461',
+                 'app_type':'xyq'
+                 }
         r = requests.post(login_url,data=datas,headers=headers)
         print(r.json())
     def json_query(self):
