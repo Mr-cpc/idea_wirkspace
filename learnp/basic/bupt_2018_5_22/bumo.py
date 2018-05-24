@@ -28,9 +28,6 @@ def get_bumo_info():
         objs = []
         while True:
             json_data = cbg.json_query()
-            if json_data['status'] != 1:
-                print('请求失败')
-                return
             equip_list = json_data['equip_list']
             if len(equip_list) == 0:
                 break
