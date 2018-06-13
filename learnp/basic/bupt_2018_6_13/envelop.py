@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+
+from basic.bupt_2017_10_30.deco import time_statistic
 from basic.bupt_2017_11_28.type_deco import prt
 import joblib
 from sklearn import preprocessing
@@ -26,6 +28,13 @@ def maxEnvelopes(envelopes:list):
                 dp[i] = max(dp[i],dp[j] + 1)
         ans = max(ans,dp[i])
     return ans
+@time_statistic
+def create(n:int) -> list:
+    return [None] * n
+@time_statistic
+def create2(n:int) -> list:
+    return [0 for i in range(n)]
 if __name__ == '__main__':
     print(maxEnvelopes([[4,5],[4,6],[6,7],[2,3],[1,1]]))
-    
+    create(100000)
+    create2(100000)
