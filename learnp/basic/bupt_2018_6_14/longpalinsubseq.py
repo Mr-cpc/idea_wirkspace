@@ -17,7 +17,7 @@ Time:14:20
 def longestpalinsubsequence(s:str):
     if not s:
         return 0
-    dp =[[0 if i != j else 1 for i in range(len(s))] for j in range(len(s))]
+    dp =[[int(i == j) for i in range(len(s))] for j in range(len(s))]
     i,j = 0,1
     while j < len(s):
         for k in range(len(s)-j):
