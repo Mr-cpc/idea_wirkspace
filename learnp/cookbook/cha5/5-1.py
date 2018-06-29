@@ -57,6 +57,17 @@ is_file = os.path.isfile(dir_name)
 # 判断是否是目录
 is_dir = os.path.isdir(x)
 # print(is_dir)
+
+# 列出某个目录下的所有内容(包括文件，子目录)
+dir_name = r'C:\Users\waiting\Desktop\contest\idea_wirkspace\learnp\cookbook'
+contents = os.listdir(dir_name)
+print(os.listdir('../..'))
+# print(contents)
+
+# 还原完整的文件名(目录名)
+# for x in contents:
+#     print(os.path.join(dir_name,x))
+
 # 在任何时候处理文件路径相关的问题时，都应该使用os.path而不是使用标准的字符串操作，
 # 因为os.path知道如何处理unix和windows的平台差异，对诸如文件分隔符等问题进行处理。
 if __name__ == '__main__':
