@@ -23,6 +23,6 @@ class Property:
     def items(self):
         return self.d.items()
 if __name__ == '__main__':
-    ppt = Property(r'G:\idea_wirkspace\learnp\basic\bupt_2018_1_17\serverid.properties')
+    ppt = Property(r'..\bupt_2018_1_17\serverid.properties')
     for x in ppt:
         print(x)

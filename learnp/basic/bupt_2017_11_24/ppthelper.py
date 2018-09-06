@@ -18,7 +18,7 @@ Time:10:15
 '''
 
 class PptHelper:
-    def __init__(self,path = r'G:\idea_wirkspace\learnp\basic\bupt_2017_11_24\global.properties'):
+    def __init__(self,path = r'..\bupt_2017_11_24\global.properties'):
         self.ppt = Property(path)
 
     def __getitem__(self, item):
