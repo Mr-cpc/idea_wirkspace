@@ -1,5 +1,5 @@
 import re
-
+from mako.template import Template
 from pip._vendor import requests
 from bs4 import BeautifulSoup as bs
 class HtmlScra:
@@ -70,5 +70,61 @@ def process_querystr(query_str:str):
         pair = pair.split('=')
         d[pair[0]] = pair[1]
     return d
+
+
+def bots():
+    """
+    :return: a list consists of dict like [{'id':1,'name':'xxx'}]
+    """
+    scra = HtmlScra('https://pre2-ai-op.alibaba-inc.com/api/theme/bots',{'cookie': 'cna=wcHBE63iZFcCASp4Su+m9UBK; UM_distinctid=1658e7db489460-07416740ad7b77-323b5b03-1fa400-1658e7db48a6e4; l=AsjIptZYiql58zBvMmkfpY7/GD3acSx7; new_openwork_feedback_animate=true; hrc_sidebar=open; goc_portal_locale=zh; emplId=175162; animate_date=2018918; cn_1260001221_dplus=%7B%22distinct_id%22%3A%20%221658e7db489460-07416740ad7b77-323b5b03-1fa400-1658e7db48a6e4%22%2C%22sp%22%3A%20%7B%22%24_sessionid%22%3A%200%2C%22%24_sessionTime%22%3A%201537249480%2C%22%24dp%22%3A%200%2C%22%24_sessionPVTime%22%3A%201537249480%7D%7D; CNZZDATA1264634009=396751084-1537247032-%7C1537247032; EGG_SESS=uKc8ALaBEWs-DLyAd2mmMf5sqMCeEnn1-WI8jr6RFGxVFJVTfPfmltcCDNYsywGfy3xTrpMk2JcxBPCJoY9xfA2xXWrncNy_D30xf1Qo9r_1W6_PWiiy_RJO_ZziSa562HSCkvGXp6rYAMxLp1eF__9-PLKIcbVfep27WV6A3jL4EjgB6lUGssfCsRx1UnhEMj0CohShKkItusuTqnNeUIfsMeDAYycSBRb1rkTlmQeXzlNyG7Fm4MiL6CdpRxX6HSzT_mMYRVesncXEh01L2jWrAD9UuPeo9xBlljkM_eTg1p5StU79PMkZqVAxPUCw_OMJH65rkt3WB1d0Z9nG7XbUGa4B14lPPGWke7_5AD-ckVbQnLw4Y9eReW6hm_pZoHGxAlJUxjj64RDZR0sjCP7FPX5rIBhFolzlP_DUK_WelizK393lxSGsGFwapScFZca2-dWBgpMsjqZ4mVRelh7mHM3H_spVe-fmrGl44LMY7fo2D5y9o4-jeVdx0eHUo5nPHXuE4CbSXQ9tj8tUjSCAmgKYegl2F4mYhlwN0RplQXIHj_g_mQkQEObmDTaDe1gMP4CVdW6AHNnTm0d-bFY1EgXRF9jVwrwB3MHtDIp52w58sLBMp8oFL8_GsrvSNVRxpAEFD89qVHbSfj7Qj8idAWh7_qW9YLipWBksuArX8mfi7UCZXnV4SV-kehb_frD_u0CjulebzIqTwbnreE-knGap4OZFxxgSF08xtKxXf4SLkkvZDXVAV9fmRG1FuJSKBLOzrTUuctD_2KZeCvKzD6cW1LI_Fa08HGbuS6GcdqC_eBk2gQhbS4m0RYto0F07-pwJ43ZhChHrtafLvQuBpM9w862p91vCf7cqNfZ9qVJQT6EXDAsF_XACDghJ0DyAgxDPlxdIfcYnBiMYHmHcxJPseU8wfxWtNuxxWVQuCDpp7uih1Sq3cc_kqoiBN-TQw23GYWH2WeiTPIKlEHhV0kTUlsl1vMl0vHYOKCsCtiwidyf6KEifRVegeVJ7nYdUdy33YW5QDqt9f64BpZwwsx0T4MepoMJgu-ANryDK2dfDniuHJEHxlgXfksD2Qrp5QWRl-CCNIRwsBlA_sLk14Dbjkji6pv14rvCIQlIVjx1LY7sBIVmBURJcq16m6I4yUTVcae4yMIiV-7rH08lo3oraYQKnKfkgvCWoW7XHViXPL8_8zWYK8hZxz2IqdxPtfyDcJw46x35HodD7j_dwohH8qxrWd2SjTilkdIm8eSOaV5HuG0gVDC2Q-qywnoe1cXVVmQA8yXxfHTUiHznEXPZvSzjuidN0W_LOVkUrgTnKblRIJY6S3GLnHnHgpibvjEYJ7t1kiwkkRfD8gUJqQe5T_HwJ1dhXmtAFj3KuVY9o92Vzqq_SPM0f6ZC136cg0_adg-MCEbrfuuGkCmRB0THWMZRwhMA9Py1Zo5PW5nApK6YKBuPPfUikbR3G; isg=BPX1tXrmwhRyECaf-SsZxCtZBHGxd5lFvtj1uXcc0Gy7TjxAO8OmVK-InFJdDsE8'})
+    data = scra.get({})
+    if data['code'] != 0:
+        return []
+    bot_list = data['retValue']['botsList']
+    with open('bots.txt','w',encoding='utf-8') as f:
+        for i,bot in enumerate(bot_list):
+            print('{}.bot_id: {},name: {}'.format(i,bot['id'],bot['name']),file=f)
+
+    return bot_list
+def topics(bot_id:int):
+    scra = HtmlScra('https://pre2-ai-op.alibaba-inc.com/api/theme/topicBybots',{'cookie': 'cna=wcHBE63iZFcCASp4Su+m9UBK; UM_distinctid=1658e7db489460-07416740ad7b77-323b5b03-1fa400-1658e7db48a6e4; l=AsjIptZYiql58zBvMmkfpY7/GD3acSx7; new_openwork_feedback_animate=true; hrc_sidebar=open; goc_portal_locale=zh; emplId=175162; animate_date=2018918; cn_1260001221_dplus=%7B%22distinct_id%22%3A%20%221658e7db489460-07416740ad7b77-323b5b03-1fa400-1658e7db48a6e4%22%2C%22sp%22%3A%20%7B%22%24_sessionid%22%3A%200%2C%22%24_sessionTime%22%3A%201537249480%2C%22%24dp%22%3A%200%2C%22%24_sessionPVTime%22%3A%201537249480%7D%7D; CNZZDATA1264634009=396751084-1537247032-%7C1537247032; EGG_SESS=uKc8ALaBEWs-DLyAd2mmMf5sqMCeEnn1-WI8jr6RFGxVFJVTfPfmltcCDNYsywGfy3xTrpMk2JcxBPCJoY9xfA2xXWrncNy_D30xf1Qo9r_1W6_PWiiy_RJO_ZziSa562HSCkvGXp6rYAMxLp1eF__9-PLKIcbVfep27WV6A3jL4EjgB6lUGssfCsRx1UnhEMj0CohShKkItusuTqnNeUIfsMeDAYycSBRb1rkTlmQeXzlNyG7Fm4MiL6CdpRxX6HSzT_mMYRVesncXEh01L2jWrAD9UuPeo9xBlljkM_eTg1p5StU79PMkZqVAxPUCw_OMJH65rkt3WB1d0Z9nG7XbUGa4B14lPPGWke7_5AD-ckVbQnLw4Y9eReW6hm_pZoHGxAlJUxjj64RDZR0sjCP7FPX5rIBhFolzlP_DUK_WelizK393lxSGsGFwapScFZca2-dWBgpMsjqZ4mVRelh7mHM3H_spVe-fmrGl44LMY7fo2D5y9o4-jeVdx0eHUo5nPHXuE4CbSXQ9tj8tUjSCAmgKYegl2F4mYhlwN0RplQXIHj_g_mQkQEObmDTaDe1gMP4CVdW6AHNnTm0d-bFY1EgXRF9jVwrwB3MHtDIp52w58sLBMp8oFL8_GsrvSNVRxpAEFD89qVHbSfj7Qj8idAWh7_qW9YLipWBksuArX8mfi7UCZXnV4SV-kehb_frD_u0CjulebzIqTwbnreE-knGap4OZFxxgSF08xtKxXf4SLkkvZDXVAV9fmRG1FuJSKBLOzrTUuctD_2KZeCvKzD6cW1LI_Fa08HGbuS6GcdqC_eBk2gQhbS4m0RYto0F07-pwJ43ZhChHrtafLvQuBpM9w862p91vCf7cqNfZ9qVJQT6EXDAsF_XACDghJ0DyAgxDPlxdIfcYnBiMYHmHcxJPseU8wfxWtNuxxWVQuCDpp7uih1Sq3cc_kqoiBN-TQw23GYWH2WeiTPIKlEHhV0kTUlsl1vMl0vHYOKCsCtiwidyf6KEifRVegeVJ7nYdUdy33YW5QDqt9f64BpZwwsx0T4MepoMJgu-ANryDK2dfDniuHJEHxlgXfksD2Qrp5QWRl-CCNIRwsBlA_sLk14Dbjkji6pv14rvCIQlIVjx1LY7sBIVmBURJcq16m6I4yUTVcae4yMIiV-7rH08lo3oraYQKnKfkgvCWoW7XHViXPL8_8zWYK8hZxz2IqdxPtfyDcJw46x35HodD7j_dwohH8qxrWd2SjTilkdIm8eSOaV5HuG0gVDC2Q-qywnoe1cXVVmQA8yXxfHTUiHznEXPZvSzjuidN0W_LOVkUrgTnKblRIJY6S3GLnHnHgpibvjEYJ7t1kiwkkRfD8gUJqQe5T_HwJ1dhXmtAFj3KuVY9o92Vzqq_SPM0f6ZC136cg0_adg-MCEbrfuuGkCmRB0THWMZRwhMA9Py1Zo5PW5nApK6YKBuPPfUikbR3G; isg=BPX1tXrmwhRyECaf-SsZxCtZBHGxd5lFvtj1uXcc0Gy7TjxAO8OmVK-InFJdDsE8'})
+    data = scra.get({'botId': bot_id})
+    if data['code'] != 0:
+        return []
+    topic_list = data['retValue']['topicList']
+    with open('{}_topics.txt'.format(bot_id),'w',encoding='utf-8') as f:
+        for topic in topic_list:
+            print('topic_id: {},name: {}'.format(topic['id'], topic['name']),file=f)
+
+    return topic_list
+
+def get_note():
+    scra = HtmlScra('https://note.alibaba-inc.com/note/listNotes.json',
+                    {'cookie': 'cna=wcHBE63iZFcCASp4Su+m9UBK; UM_distinctid=1658e7db489460-07416740ad7b77-323b5b03-1fa400-1658e7db48a6e4; l=AsjIptZYiql58zBvMmkfpY7/GD3acSx7; new_openwork_feedback_animate=true; hrc_sidebar=open; goc_portal_locale=zh; emplId=175162; animate_date=2018919; alidocs-note_USER_COOKIE=AA7A1B3B7CECEB463BA90DE430EE704125E60D51DA617CBB9B32601F01CCC27300586F3D53D86E167451D517E9544AC40A18E55B5BEED6A4FF65C76CCC1FF04B8908B93A8661129CF26A67579D0588C88CC1335EC73C8DEDBC16D65C15CB9B9058D7D0F18A1A7BB5DE0A23FA57B1B04158300FF118597A076ECEB08C0851450CD05C855B6A1004EC28A63C918D7D99D5DA499B1B3EA41B5C0FA3D4E506E6EE562CD821332E76735D8539FEE7DFFDCB6822960781A845145F223452416409118E; SSO_LANG=ZH-CN; SSO_EMPID_HASH=8be487f58a9f53583743e742ca8dc011; emplId=175162; _csrf_token=23223656-b707-45f9-8317-4fa02bd2d5b2; cn_1260001221_dplus=%7B%22distinct_id%22%3A%20%221658e7db489460-07416740ad7b77-323b5b03-1fa400-1658e7db48a6e4%22%2C%22sp%22%3A%20%7B%22%24_sessionid%22%3A%200%2C%22%24_sessionTime%22%3A%201537251569%2C%22%24dp%22%3A%200%2C%22%24_sessionPVTime%22%3A%201537251569%7D%7D; alidocs-note_SSO_TOKEN=EC87B4D74BB1369B8C82D9E62C947B6E05C7FC8C8C0A9918968203A34D0C96536FC5F110FB2746AD2EA5A01EF250779F; alidocs-note_LAST_HEART_BEAT_TIME=90183F69E112EFCA8EA3E3A8AB6724FE; isg=BKmpB5eu1nnJmur7pa-tGD9luFUdc6luypS5XUuaKhAXEsckk8bLeF5k0PaBijXg'})
+    data = scra.get(process_querystr('_api=AliDocList.listNotes&_mock=false&_csrf=23223656-b707-45f9-8317-4fa02bd2d5b2&accessToken=&client=&pageSize=1000&lastId=&lastModifiedAt=&noteBookId=149332&sortCol=gmt_modified&sortOrder=desc&_stamp=1537323900377'))
+    if not data['success']:
+        return
+    notes = data['content']['items']
+    for note in notes:
+        get_note_detail(note)
+def get_note_detail(note):
+    query = {'_api': 'Note.viewNote',
+             '_mock': 'false',
+             '_csrf': '23223656-b707-45f9-8317-4fa02bd2d5b2',
+             'accessToken': '',
+             'client': '',
+             'noteId': str(note['id']),
+             '_stamp': '1537326720873'}
+    scra = HtmlScra('https://note.alibaba-inc.com/note/viewNote.json',{
+        'cookie': 'cna=wcHBE63iZFcCASp4Su+m9UBK; UM_distinctid=1658e7db489460-07416740ad7b77-323b5b03-1fa400-1658e7db48a6e4; l=AsjIptZYiql58zBvMmkfpY7/GD3acSx7; new_openwork_feedback_animate=true; hrc_sidebar=open; goc_portal_locale=zh; emplId=175162; animate_date=2018919; alidocs-note_USER_COOKIE=AA7A1B3B7CECEB463BA90DE430EE704125E60D51DA617CBB9B32601F01CCC27300586F3D53D86E167451D517E9544AC40A18E55B5BEED6A4FF65C76CCC1FF04B8908B93A8661129CF26A67579D0588C88CC1335EC73C8DEDBC16D65C15CB9B9058D7D0F18A1A7BB5DE0A23FA57B1B04158300FF118597A076ECEB08C0851450CD05C855B6A1004EC28A63C918D7D99D5DA499B1B3EA41B5C0FA3D4E506E6EE562CD821332E76735D8539FEE7DFFDCB6822960781A845145F223452416409118E; SSO_LANG=ZH-CN; SSO_EMPID_HASH=8be487f58a9f53583743e742ca8dc011; emplId=175162; _csrf_token=23223656-b707-45f9-8317-4fa02bd2d5b2; cn_1260001221_dplus=%7B%22distinct_id%22%3A%20%221658e7db489460-07416740ad7b77-323b5b03-1fa400-1658e7db48a6e4%22%2C%22sp%22%3A%20%7B%22%24_sessionid%22%3A%200%2C%22%24_sessionTime%22%3A%201537251569%2C%22%24dp%22%3A%200%2C%22%24_sessionPVTime%22%3A%201537251569%7D%7D; alidocs-note_SSO_TOKEN=EC87B4D74BB1369B8C82D9E62C947B6E05C7FC8C8C0A9918968203A34D0C96536FC5F110FB2746AD2EA5A01EF250779F; alidocs-note_LAST_HEART_BEAT_TIME=90183F69E112EFCA8EA3E3A8AB6724FE; isg=BOLiKZArzZx1vtH2QgoGnTDIM2haNtKLVcmiECx55tW8_4p5FMISXCoZK3umb17l'
+    })
+    data = scra.get(query)
+    if not data['success']:
+        return
+    template = Template(filename='html.tpl')
+    with open('{}.html'.format(note['title']),'w',encoding='utf-8') as f:
+        print(template.render(body = data['content']['content'],title = data['content']['title']), file=f)
 if __name__ == '__main__':
-    get_qa()
+    get_note()
+    # get_apps()
+    # get_qa()
